@@ -45,7 +45,7 @@
             </div>
             <div class="hero-slider__img">
                 <img
-                    src="{{ asset('public/assets/img/banner-slider-img.png') }}"
+                    src="{{ asset('public/zolfin/assets/img/banner-slider-img.png') }}"
                     alt="zolfin"
                     class="img-fluid hero-slider__img-is"
                 />
@@ -96,7 +96,7 @@
             </div>
             <div class="hero-slider__img">
                 <img
-                    src="{{ asset('public/assets/img/hero-img-2.png') }}"
+                    src="{{ asset('public/zolfin/assets/img/hero-img-2.png') }}"
                     alt="zolfin"
                     class="img-fluid hero-slider__img-is"
                 />
@@ -147,7 +147,7 @@
             </div>
             <div class="hero-slider__img">
                 <img
-                    src="{{ asset('public/assets/img/hero-img-3.png') }}"
+                    src="{{ asset('public/zolfin/assets/img/hero-img-3.png') }}"
                     alt="zolfin"
                     class="img-fluid hero-slider__img-is"
                 />
@@ -198,7 +198,7 @@
             </div>
             <div class="hero-slider__img">
                 <img
-                    src="{{ asset('public/assets/img/banner-slider-img.png') }}"
+                    src="{{ asset('public/zolfin/assets/img/banner-slider-img.png') }}"
                     alt="zolfin"
                     class="img-fluid hero-slider__img-is"
                 />
@@ -225,7 +225,7 @@
                     <div class="cards border">
                         <div class="cards__img mx-auto">
                             <img
-                                src="{{ asset('public/assets/img/showcase-icon-1.png') }}"
+                                src="{{ asset('public/zolfin/assets/img/showcase-icon-1.png') }}"
                                 alt="zolfin"
                                 class="img-fluid w-100"
                             />
@@ -260,7 +260,7 @@
                     <div class="cards border">
                         <div class="cards__img mx-auto">
                             <img
-                                src="{{ asset('public/assets/img/showcase-icon-1.png') }}"
+                                src="{{ asset('public/zolfin/assets/img/showcase-icon-1.png') }}"
                                 alt="zolfin"
                                 class="img-fluid w-100"
                             />
@@ -295,7 +295,7 @@
                     <div class="cards border">
                         <div class="cards__img mx-auto">
                             <img
-                                src="{{ asset('public/assets/img/showcase-icon-1.png') }}"
+                                src="{{ asset('public/zolfin/assets/img/showcase-icon-1.png') }}"
                                 alt="zolfin"
                                 class="img-fluid w-100"
                             />
@@ -337,7 +337,7 @@
             <div class="row">
                 <div class="col-lg-6 t-mb-50 mb-lg-0" data-sal="slide-right" data-sal-duration="1300">
                     <img
-                        src="{{ asset('public/assets/img/about-img.png') }}"
+                        src="{{ asset('public/zolfin/assets/img/about-img.png') }}"
                         alt="zolfin"
                         class="img-fluid"
                     />
@@ -406,7 +406,7 @@
                             <div class="cards border">
                                 <div class="cards__img mx-auto ml-lg-0">
                                     <img
-                                        src="{{ asset('public/assets/img/showcase-icon-4.png') }}"
+                                        src="{{ asset('public/zolfin/assets/img/showcase-icon-4.png') }}"
                                         alt="zolfin"
                                         class="img-fluid w-100"
                                     />
@@ -441,7 +441,7 @@
                             <div class="cards border">
                                 <div class="cards__img mx-auto ml-lg-0">
                                     <img
-                                        src="{{ asset('public/assets/img/showcase-icon-5.png') }}"
+                                        src="{{ asset('public/zolfin/assets/img/showcase-icon-5.png') }}"
                                         alt="zolfin"
                                         class="img-fluid w-100"
                                     />
@@ -476,7 +476,7 @@
                             <div class="cards border">
                                 <div class="cards__img">
                                     <img
-                                        src="{{ asset('public/assets/img/showcase-icon-6.png') }}"
+                                        src="{{ asset('public/zolfin/assets/img/showcase-icon-6.png') }}"
                                         alt="zolfin"
                                         class="img-fluid w-100"
                                     />
@@ -507,7 +507,7 @@
                             <div class="cards border">
                                 <div class="cards__img">
                                     <img
-                                        src="{{ asset('public/assets/img/showcase-icon-7.png') }}"
+                                        src="{{ asset('public/zolfin/assets/img/showcase-icon-7.png') }}"
                                         alt="zolfin"
                                         class="img-fluid w-100"
                                     />
@@ -568,7 +568,7 @@
                                     <div class="project-card__img">
                                         <a href="#" class="t-link w-100">
                                             <img
-                                                src="{{ asset('public/assets/img/project-img-1.png') }}"
+                                                src="{{ asset('public/zolfin/assets/img/project-img-1.png') }}"
                                                 alt="zolfin"
                                                 class="img-fluid w-100"
                                             />
@@ -605,7 +605,7 @@
                                     <div class="project-card__img">
                                         <a href="#" class="t-link w-100">
                                             <img
-                                                src="{{ asset('public/assets/img/project-img-2.png') }}"
+                                                src="{{ asset('public/zolfin/assets/img/project-img-2.png') }}"
                                                 alt="zolfin"
                                                 class="img-fluid w-100"
                                             />
@@ -642,7 +642,7 @@
                                     <div class="project-card__img">
                                         <a href="#" class="t-link w-100">
                                             <img
-                                                src="{{ asset('public/assets/img/project-img-3.png') }}"
+                                                src="{{ asset('public/zolfin/assets/img/project-img-3.png') }}"
                                                 alt="zolfin"
                                                 class="img-fluid w-100"
                                             />
@@ -679,7 +679,7 @@
                                     <div class="project-card__img">
                                         <a href="#" class="t-link w-100">
                                             <img
-                                                src="{{ asset('public/assets/img/project-img-2.png') }}"
+                                                src="{{ asset('public/zolfin/assets/img/project-img-2.png') }}"
                                                 alt="zolfin"
                                                 class="img-fluid w-100"
                                             />
@@ -716,7 +716,7 @@
                                     <div class="project-card__img">
                                         <a href="#" class="t-link w-100">
                                             <img
-                                                src="{{ asset('public/assets/img/project-img-1.png') }}"
+                                                src="{{ asset('public/zolfin/assets/img/project-img-1.png') }}"
                                                 alt="zolfin"
                                                 class="img-fluid w-100"
                                             />
@@ -753,7 +753,7 @@
                                     <div class="project-card__img">
                                         <a href="#" class="t-link w-100">
                                             <img
-                                                src="{{ asset('public/assets/img/project-img-3.png') }}"
+                                                src="{{ asset('public/zolfin/assets/img/project-img-3.png') }}"
                                                 alt="zolfin"
                                                 class="img-fluid w-100"
                                             />
@@ -842,7 +842,7 @@
                                             class="price-card__img mx-auto"
                                         >
                                             <img
-                                                src="{{ asset('public/assets/img/price-img-1.png') }}"
+                                                src="{{ asset('public/zolfin/assets/img/price-img-1.png') }}"
                                                 alt="zolfin"
                                                 class="img-fluid w-100"
                                             />
@@ -919,7 +919,7 @@
                                             class="price-card__img mx-auto"
                                         >
                                             <img
-                                                src="{{ asset('public/assets/img/price-img-2.png') }}"
+                                                src="{{ asset('public/zolfin/assets/img/price-img-2.png') }}"
                                                 alt="zolfin"
                                                 class="img-fluid w-100"
                                             />
@@ -995,7 +995,7 @@
                                             class="price-card__img mx-auto"
                                         >
                                             <img
-                                                src="{{ asset('public/assets/img/price-img-3.png') }}"
+                                                src="{{ asset('public/zolfin/assets/img/price-img-3.png') }}"
                                                 alt="zolfin"
                                                 class="img-fluid w-100"
                                             />
@@ -1076,7 +1076,7 @@
                                             class="price-card__img mx-auto"
                                         >
                                             <img
-                                                src="{{ asset('public/assets/img/price-img-1.png') }}"
+                                                src="{{ asset('public/zolfin/assets/img/price-img-1.png') }}"
                                                 alt="zolfin"
                                                 class="img-fluid w-100"
                                             />
@@ -1153,7 +1153,7 @@
                                             class="price-card__img mx-auto"
                                         >
                                             <img
-                                                src="{{ asset('public/assets/img/price-img-2.png') }}"
+                                                src="{{ asset('public/zolfin/assets/img/price-img-2.png') }}"
                                                 alt="zolfin"
                                                 class="img-fluid w-100"
                                             />
@@ -1229,7 +1229,7 @@
                                             class="price-card__img mx-auto"
                                         >
                                             <img
-                                                src="{{ asset('public/assets/img/price-img-3.png') }}"
+                                                src="{{ asset('public/zolfin/assets/img/price-img-3.png') }}"
                                                 alt="zolfin"
                                                 class="img-fluid w-100"
                                             />
@@ -1416,7 +1416,7 @@
                         <div class="testimonials-slider__item">
                             <div class="testimonials">
                                 <div class="testimonials__img-box mx-auto ml-md-0 mr-md-3">
-                                    <img src="{{ asset('public/assets/img/user-2.jpg') }}" alt="zolfin" class="img-fluid w-100"/>
+                                    <img src="{{ asset('public/zolfin/assets/img/user-2.jpg') }}" alt="zolfin" class="img-fluid w-100"/>
                                 </div>
                                 <div
                                     class="testimonials__content t-mt-30 mt-md-0"
@@ -1449,7 +1449,7 @@
                                     class="testimonials__img-box mx-auto ml-md-0 mr-md-3"
                                 >
                                     <img
-                                        src="{{ asset('public/assets/img/user-3.jpg') }}"
+                                        src="{{ asset('public/zolfin/assets/img/user-3.jpg') }}"
                                         alt="zolfin"
                                         class="img-fluid w-100"
                                     />
@@ -1485,7 +1485,7 @@
                                     class="testimonials__img-box mx-auto ml-md-0 mr-md-3"
                                 >
                                     <img
-                                        src="{{ asset('public/assets/img/user.jpg') }}"
+                                        src="{{ asset('public/zolfin/assets/img/user.jpg') }}"
                                         alt="zolfin"
                                         class="img-fluid w-100"
                                     />
@@ -1544,7 +1544,7 @@
                         <div class="price-card__img text-center mx-auto">
                             <a href="#" class="t-link">
                                 <img
-                                    src="{{ asset('public/assets/img/process-icon-1.png') }}"
+                                    src="{{ asset('public/zolfin/assets/img/process-icon-1.png') }}"
                                     alt="zolfin"
                                     class="img-fluid w-100"
                                 />
@@ -1562,7 +1562,7 @@
                         <div class="price-card__img text-center mx-auto">
                             <a href="#" class="t-link">
                                 <img
-                                    src="{{ asset('public/assets/img/process-icon-2.png') }}"
+                                    src="{{ asset('public/zolfin/assets/img/process-icon-2.png') }}"
                                     alt="zolfin"
                                     class="img-fluid w-100"
                                 />
@@ -1580,7 +1580,7 @@
                         <div class="price-card__img text-center mx-auto">
                             <a href="#" class="t-link">
                                 <img
-                                    src="{{ asset('public/assets/img/process-icon-3.png') }}"
+                                    src="{{ asset('public/zolfin/assets/img/process-icon-3.png') }}"
                                     alt="zolfin"
                                     class="img-fluid w-100"
                                 />
@@ -1598,7 +1598,7 @@
                         <div class="price-card__img text-center mx-auto">
                             <a href="#" class="t-link">
                                 <img
-                                    src="{{ asset('public/assets/img/process-icon-4.png') }}"
+                                    src="{{ asset('public/zolfin/assets/img/process-icon-4.png') }}"
                                     alt="zolfin"
                                     class="img-fluid w-100"
                                 />
@@ -1638,7 +1638,7 @@
                         <div class="price-card__img mx-auto">
                             <a href="blog-details.html" class="t-link">
                                 <img
-                                    src="{{ asset('public/assets/img/price-img-1.png') }}"
+                                    src="{{ asset('public/zolfin/assets/img/price-img-1.png') }}"
                                     alt="zolfin"
                                     class="img-fluid w-100"
                                 />
@@ -1681,7 +1681,7 @@
                         <div class="price-card__img mx-auto">
                             <a href="blog-details.html" class="t-link">
                                 <img
-                                    src="{{ asset('public/assets/img/price-img-2.png') }}"
+                                    src="{{ asset('public/zolfin/assets/img/price-img-2.png') }}"
                                     alt="zolfin"
                                     class="img-fluid w-100"
                                 />
@@ -1725,7 +1725,7 @@
                         <div class="price-card__img mx-auto">
                             <a href="blog-details.html" class="t-link">
                                 <img
-                                    src="{{ asset('public/assets/img/price-img-3.png') }}"
+                                    src="{{ asset('public/zolfin/assets/img/price-img-3.png') }}"
                                     alt="zolfin"
                                     class="img-fluid w-100"
                                 />
@@ -1778,7 +1778,7 @@
                             <div class="col-md-7 ">
                                 <div class="zl-cta__left">
                                     <div class="zl-cta__left-img">
-                                        <img src="{{ asset('public/assets/img/cta-img.png') }}" alt="zolfin" class="img-fluid h-100 w-100">
+                                        <img src="{{ asset('public/zolfin/assets/img/cta-img.png') }}" alt="zolfin" class="img-fluid h-100 w-100">
                                     </div>
                                     <h2 class="mt-0 text-capitalize mb-0">
                                         Ready to Work Together?
@@ -1837,7 +1837,7 @@
                         <div class="brand mx-auto mx-lg-0">
                             <a href="index.html" class="t-link">
                                 <img
-                                    src="{{ asset('public/assets/img/logo.png') }}"
+                                    src="{{ asset('public/zolfin/assets/img/logo.png') }}"
                                     alt="zolfin"
                                     class="img-fluid w-100"
                                 />

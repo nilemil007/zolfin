@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ !isset($title) ? config('app.name') : $title .' | '. config('app.name') }}</title>
 
+    <!-- favicon -->
+    <link rel="icon" href="{{ asset('public/favicon.ico') }}" sizes="16x16" type="image/ico"/>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\View\Components\Backend\AppLayout;
+use App\View\Components\Backend\GuestLayout;
 use App\View\Components\Zolfin\MainLayout;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
@@ -25,6 +26,7 @@ class BladeServiceProvider extends ServiceProvider
         Blade::components([
             MainLayout::class => 'main-layout',
             AppLayout::class => 'app-layout',
+            GuestLayout::class => 'guest-layout'
         ]);
     }
 }

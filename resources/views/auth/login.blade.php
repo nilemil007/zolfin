@@ -1,65 +1,62 @@
-<x-main-layout>
-    <!-- Banner  -->
-    <div class="zol-banner zol-banner--404 t-pt-150 pb-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8 text-center">
-                    <h2 class="mt-0 t-text-light text-capitalize">
-                        Login
-                    </h2>
-                    <ul class="t-list breadcrumbs d-flex justify-content-center align-items-center">
-                        <li class="breadcrumbs__list">
-                            <a href="{{ route('home') }}" class="t-link breadcrumbs__link t-link--light-alpha text-capitalize">
-                                home
-                            </a>
-                        </li>
-                        <li class="breadcrumbs__list">
-                            <a href="#" class="t-link breadcrumbs__link t-link--light-alpha text-capitalize">
-                                login
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+<x-guest-layout>
+    <x-slot:title>Login</x-slot:title>
+
+    <div class="login-box">
+        <!-- /.login-logo -->
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                <a href="{{ route('home') }}" class="h1">{{ config('app.name') }}</a>
             </div>
-        </div>
-    </div>
-    <!-- Banner End -->
+            <div class="card-body">
+                <p class="login-box-msg">Sign in to start your journey</p>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <div class="card mt-5 mb-5">
-                    <div class="card-body">
-                        <form action="{{ route('login') }}" method="POST">
-                            @csrf
-
-                            <!-- Login -->
-                            <div class="mb-3">
-                                <label for="login" class="form-label">Username/Email/Phone</label>
-                                <input type="text" name="login" value="{{ old('login') }}" class="form-control @error('login') is-invalid @enderror" id="login" placeholder="Enter Username, Email or Phone">
-                                @error('login') <small class="text-danger">{{ $message }}</small> @enderror
+                <form action="{{ route('login') }}" method="POST">
+                    @csrf
+                    <div class="input-group">
+                        <input type="text" name="login" value="{{ old('login') }}" class="form-control @error('login') is-invalid @enderror" id="login" placeholder="Enter Username, Email or Phone">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
                             </div>
+                        </div>
+                    </div>
+                    @error('login') <small class="text-danger">{{ $message }}</small> @enderror
 
-                            <!-- Password -->
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Enter password">
-                                @error('password') <small class="text-danger">{{ $message }}</small> @enderror
+                    <div class="input-group mt-3 mb-3">
+                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Enter password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
                             </div>
+                        </div>
+                    </div>
+                    @error('password') <small class="text-danger">{{ $message }}</small> @enderror
 
-                            <!-- Remember -->
-                            <div class="form-check">
-                                <input name="remember" class="form-check-input" type="checkbox" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Remember me
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="icheck-primary">
+                                <input name="remember" type="checkbox" id="remember">
+                                <label for="remember">
+                                    Remember Me
                                 </label>
                             </div>
-
-                            <button class="btn btn-primary mt-3">Login</button>
-                        </form>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        </div>
+                        <!-- /.col -->
                     </div>
-                </div>
+                </form>
+
+                <p class="mb-1">
+                    <a href="{{ route('password.request') }}">I forgot my password</a>
+                </p>
             </div>
+            <!-- /.card-body -->
         </div>
+        <!-- /.card -->
     </div>
-</x-main-layout>
+    <!-- /.login-box -->
+
+</x-guest-layout>
