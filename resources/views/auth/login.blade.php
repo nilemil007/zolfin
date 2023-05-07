@@ -8,7 +8,12 @@
                 <a href="{{ route('home') }}" class="h1">{{ config('app.name') }}</a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Sign in to start your journey</p>
+                @if(session()->has('status'))
+                    <p class="text-success login-box-msg">{{ session('status') }}</p>
+                @else
+                    <p class="login-box-msg">Sign in to start your journey</p>
+                @endif
+
 
                 <form action="{{ route('login') }}" method="POST">
                     @csrf
