@@ -24,15 +24,15 @@
 
                 <!-- Dashboard -->
                 <li class="nav-item">
-                    <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                    <a href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
 
                 <!-- Categories -->
-                <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->routeIs('category') ? 'active' : '' }}">
+                <li class="nav-item {{ request()->routeIs('admin.category.index') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ request()->routeIs('admin.category.index') ? 'active' : '' }}">
                         <i class="nav-icon far fa-envelope"></i>
                         <p>
                             Categories
@@ -47,7 +47,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/mailbox/compose.html" class="nav-link">
+                            <a href="{{ route('admin.category.index') }}" class="nav-link {{ request()->routeIs('admin.category.index') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>All category</p>
                             </a>
