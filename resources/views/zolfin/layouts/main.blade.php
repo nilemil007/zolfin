@@ -6,23 +6,24 @@
     <title>{{ !isset($title) ? config('app.name') : $title .' | '. config('app.name') }}</title>
 
     <!-- favicon -->
-    <link rel="icon" href="{{ asset('public/favicon.ico') }}" sizes="16x16" type="image/ico"/>
+    <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="16x16" type="image/ico"/>
 
     <!-- Stylesheet Link -->
-    <link rel="stylesheet" href="{{ asset('public/zolfin/assets/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('zolfin/assets/css/style.css') }}" />
 </head>
 <body class="t-bg-light-2">
+
 <!-- Preloader -->
-{{--<div class="content preloader">--}}
-{{--    <div id="inTurnFadingTextG">--}}
-{{--        <div id="inTurnFadingTextG_1" class="inTurnFadingTextG">Z</div>--}}
-{{--        <div id="inTurnFadingTextG_2" class="inTurnFadingTextG">O</div>--}}
-{{--        <div id="inTurnFadingTextG_3" class="inTurnFadingTextG">L</div>--}}
-{{--        <div id="inTurnFadingTextG_4" class="inTurnFadingTextG">F</div>--}}
-{{--        <div id="inTurnFadingTextG_5" class="inTurnFadingTextG">I</div>--}}
-{{--        <div id="inTurnFadingTextG_6" class="inTurnFadingTextG">N</div>--}}
-{{--    </div>--}}
-{{--</div>--}}
+<!-- <div class="content preloader">
+    <div id="inTurnFadingTextG">
+        <div id="inTurnFadingTextG_1" class="inTurnFadingTextG">Z</div>
+        <div id="inTurnFadingTextG_2" class="inTurnFadingTextG">O</div>
+        <div id="inTurnFadingTextG_3" class="inTurnFadingTextG">L</div>
+        <div id="inTurnFadingTextG_4" class="inTurnFadingTextG">F</div>
+        <div id="inTurnFadingTextG_5" class="inTurnFadingTextG">I</div>
+        <div id="inTurnFadingTextG_6" class="inTurnFadingTextG">N</div>
+    </div>
+</div> -->
 <!-- Preloader -->
 
 <!-- Header  -->
@@ -48,7 +49,7 @@
                     <div class="col-lg-4 t-mb-30 mb-lg-0">
                         <div class="brand mx-auto mx-lg-0">
                             <a href="{{ route('home') }}" class="t-link">
-                                <img src="{{ asset('public/zolfin/assets/img/logo.png') }}" alt="zolfin" class="img-fluid w-100"/>
+                                <img src="{{ asset('zolfin/assets/img/logo.png') }}" alt="zolfin" class="img-fluid w-100"/>
                             </a>
                         </div>
                     </div>
@@ -197,21 +198,21 @@
 <!-- Footer End -->
 
 <!-- jquery -->
-<script src="{{ asset('public/zolfin/assets/js/jquery.js') }}"></script>
+<script src="{{ asset('zolfin/assets/js/jquery.js') }}"></script>
 <!-- Bootstrap -->
-<script src="{{ asset('public/zolfin/assets/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('zolfin/assets/js/bootstrap.bundle.min.js') }}"></script>
 <!-- Slick Slider  -->
-<script src="{{ asset('public/zolfin/assets/js/slick.min.js') }}"></script>
+<script src="{{ asset('zolfin/assets/js/slick.min.js') }}"></script>
 <!-- Nice Select  -->
-<script src="{{ asset('public/zolfin/assets/js/jquery.nice-select.min.js') }}"></script>
+<script src="{{ asset('zolfin/assets/js/jquery.nice-select.min.js') }}"></script>
 <!-- Owl carousel -->
-<script src="{{ asset('public/zolfin/assets/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('zolfin/assets/js/owl.carousel.min.js') }}"></script>
 <!-- Popup  -->
-<script src="{{ asset('public/zolfin/assets/js/magnafic-popup.js') }}"></script>
+<script src="{{ asset('zolfin/assets/js/magnafic-popup.js') }}"></script>
 <!-- Animation on Scroll  -->
-<script src="{{ asset('public/zolfin/assets/js/sal.js') }}"></script>
+<script src="{{ asset('zolfin/assets/js/sal.js') }}"></script>
 <!-- Main script -->
-<script src="{{ asset('public/zolfin/assets/js/main.js') }}"></script>
+<script src="{{ asset('zolfin/assets/js/main.js') }}"></script>
 </body>
 </html>
 

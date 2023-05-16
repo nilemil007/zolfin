@@ -5,7 +5,7 @@
                 <div class="brand">
                     <a href="{{ route('home') }}" class="t-link">
                         <img
-                            src="{{ asset('public/zolfin/assets/img/logo.png') }}"
+                            src="{{ asset('zolfin/assets/img/logo.png') }}"
                             alt="zolfin"
                             class="img-fluid w-100"
                         />
