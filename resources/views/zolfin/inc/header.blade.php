@@ -31,7 +31,9 @@
                         </li>
                         @auth
                             <li class="zol-menu__list">
-                                <a href="{{ auth()->user()->role == 'admin' ? route('admin.dashboard') : ( auth()->user()->role == 'author' ? route('author.dashboard') : ( auth()->user()->role == 'editor' ? route('editor.dashboard') : '' ) ) }}"
+                                <a href="{{ auth()->user()->role == 'admin' ? route('admin.dashboard') :
+                                ( auth()->user()->role == 'author' ? route('author.dashboard') :
+                                ( auth()->user()->role == 'editor' ? route('editor.dashboard') : '' ) ) }}"
                                    class="t-link zol-menu__link">Dashboard</a>
                             </li>
                         @else
