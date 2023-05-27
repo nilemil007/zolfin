@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Admin;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Foundation\Application;
@@ -15,6 +15,6 @@ class DashboardController extends Controller
      */
     public function __invoke(Request $request): View|Factory|Application
     {
-        return view('backend.dashboard');
+        return view('backend.modules.dashboard');
     }
 }

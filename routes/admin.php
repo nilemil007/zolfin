@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Backend\Admin\DashboardController;
+use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\CategoryController;
 use Illuminate\Support\Facades\Route;
 
