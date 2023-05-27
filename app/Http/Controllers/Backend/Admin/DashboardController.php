@@ -15,6 +15,6 @@ class DashboardController extends Controller
      */
     public function __invoke(Request $request): View|Factory|Application
     {
-        return view('backend.admin.dashboard');
+        return view('backend.dashboard');
     }
 }
