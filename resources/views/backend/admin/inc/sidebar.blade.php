@@ -31,8 +31,10 @@
                 </li>
 
                 <!-- Categories -->
-                <li class="nav-item {{ request()->routeIs('admin.category.index') ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link {{ request()->routeIs('admin.category.index') ? 'active' : '' }}">
+                <li class="nav-item {{ request()->routeIs('admin.category.index') ? 'menu-open' :
+                (request()->routeIs('admin.category.create') ? 'menu-open' : '') }}">
+                    <a href="#" class="nav-link {{ request()->routeIs('admin.category.index') ? 'active' :
+                    (request()->routeIs('admin.category.create') ? 'active' : '') }}">
                         <i class="nav-icon far fa-envelope"></i>
                         <p>
                             Categories
@@ -41,7 +43,8 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/mailbox/mailbox.html" class="nav-link">
+                            <a href="{{ route('admin.category.create') }}"
+                            class="nav-link {{ request()->routeIs('admin.category.create') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add new</p>
                             </a>
