@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Category;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -15,7 +17,9 @@ class CategoryController extends Controller
      */
     public function index(): View|Application|Factory
     {
-        return view('backend.modules.category.index');
+        $categories = Category::latest()->get();
+
+        return view('backend.modules.category.index', compact('categories'));
     }
 
     /**
@@ -31,7 +35,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required','string']
+        ]);
+
+        $category = new Category;
+        $category->name = $request->name;
+        $category->slug = Str::slug($request->name);
+
+        if($category->save())
+        {
+            return redirect()->route('admin.category.create')->with('success','Category created successfully.');
+        }
     }
 
     /**
@@ -45,24 +60,38 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Category $category)
     {
-        //
+        return view('backend.modules.category.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => ['required','string']
+        ]);
+
+        $category->name = $request->name;
+        $category->slug = Str::slug($request->name);
+
+        if($category->update())
+        {
+            return redirect()->route('admin.category.index')->with('success','Category updated successfully.');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        //
+        dd($category);
+        // if($category->destroy())
+        // {
+        //     return redirect()->route('admin.category.index')->with('success','Category deleted successfully.');
+        // }
     }
 }
