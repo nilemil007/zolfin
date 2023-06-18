@@ -10,7 +10,7 @@
     </x-slot:content-header>
 
     <div class="mb-3 d-flex justify-content-end">
-        <a href="{{ route('admin.category.create') }}" class="btn btn-sm btn-primary m-0">Add new category</a>
+        <a href="{{ route('admin.category.create') }}" class="btn btn-sm btn-primary m-0"><i class="fas fa-plus"></i> Add new category</a>
     </div>
 
     <table class="table table-sm table-striped table-hover table-bordered">
@@ -31,9 +31,9 @@
                     <td>
                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                             <!-- Edit button -->
-                            <a href="{{ route('admin.category.edit', $category->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                            <a href="{{ route('admin.category.edit', $category->id) }}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
                             <!-- Delete button -->
-                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delCategory{{ $category->id }}">Delete</button>
+                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delCategory{{ $category->id }}"><i class="fas fa-trash-alt"></i></button>
                         </div>
                     </td>
                     <!-- Modal -->

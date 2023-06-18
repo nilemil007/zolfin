@@ -17,7 +17,7 @@
             <label for="categoryName" class="form-label">Name</label>
 
             <div class="input-group mb-3">
-                <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter category name" aria-label="Enter category name" required>
+                <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter category name" required autofocus>
                 <button class="btn btn-outline-primary ml-2" type="submit" id="button-addon2">Create category</button>
             </div>
 

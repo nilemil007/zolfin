@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
+/**
+ * @method static create(array $only)
+ */
 class Category extends Model
 {
     use HasFactory;
@@ -16,7 +19,10 @@ class Category extends Model
     protected function name(): Attribute
     {
         return Attribute::make(
-            set: fn ( $name ) => Str::title( $name ),
+            set: fn ( $value ) => [
+                'name' => Str::title( $value ),
+                'slug' => Str::slug( $value )
+            ],
         );
     }
 }

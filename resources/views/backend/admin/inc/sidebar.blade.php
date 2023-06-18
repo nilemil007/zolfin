@@ -36,7 +36,7 @@
                     <a href="#" class="nav-link {{ request()->routeIs('admin.category.index') ? 'active' :
                     (request()->routeIs('admin.category.create') ? 'active' :
                     (request()->routeIs('admin.category.edit') ? 'active' : '')) }}">
-                        <i class="nav-icon far fa-envelope"></i>
+                        <i class="nav-icon fas fa-th"></i>
                         <p>
                             Categories
                             <i class="fas fa-angle-left right"></i>

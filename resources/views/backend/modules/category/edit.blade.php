@@ -19,7 +19,7 @@
 
             <div class="input-group mb-3">
                 <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{ $category->name }}" placeholder="Enter category name" aria-label="Enter category name" id="categoryName" required>
-                <button class="btn btn-outline-primary ml-2" type="submit">Update category</button>
+                <button class="btn btn-primary ml-2" type="submit"><i class="fas fa-sync-alt"></i> Update category</button>
             </div>
 
             <!-- Validation messages -->

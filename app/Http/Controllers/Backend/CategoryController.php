@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Category;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
@@ -35,17 +36,13 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => ['required','string']
         ]);
 
-        $category = new Category;
-        $category->name = $request->name;
-        $category->slug = Str::slug($request->name);
-
-        if($category->save())
+        if( Category::create( $request->only('name') ) )
         {
             Toastr::success('Category created successfully.', 'Success');
         }else{
@@ -66,7 +63,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit(Category $category): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('backend.modules.category.edit', compact('category'));
     }
@@ -74,16 +71,13 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Category $category): RedirectResponse
     {
         $request->validate([
             'name' => ['required','string']
         ]);
 
-        $category->name = $request->name;
-        $category->slug = Str::slug($request->name);
-
-        if($category->update())
+        if( $category->update( $request->only('name') ) )
         {
             Toastr::success('Category updated successfully.', 'Success');
         }else{
@@ -96,7 +90,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(Category $category): RedirectResponse
     {
          if($category->delete())
          {
