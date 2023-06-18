@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoryController extends Controller
 {

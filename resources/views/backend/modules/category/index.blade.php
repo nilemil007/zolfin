@@ -45,33 +45,36 @@
         </tbody>
       </table>
 
+
+    @push('script')
+        <script>
+            $(document).ready(function(){
+                $(document).on('click','#del', function(e){
+                    e.preventDefault();
+                    var url = $('#cat_delete').attr('action');
+
+                    console.log(url);
+
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: 'Delete this record?',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes, delete',
+                    }).then((result) => {
+                        if(result.isConfirmed){
+                            window.location.href = url,
+
+                            Swal.fire(
+                                'Deleted!',
+                                'Category deleted successfully.',
+                                'success',
+                            )
+                        }
+                    })
+                });
+            });
+        </script>
+    @endpush
+
 </x-app-layout>
-
-@push('scripts')
-
-<script>
-    $(document).on('click','#del', function(e){
-        e.preventDefault();
-        var url = $(this).attr('href');
-
-        Swal.fire({
-            title: 'Are you sure?',
-            text: 'Delete data?',
-            icon: 'warning',
-            showCanelButton: true,
-            confirmButtonText: 'Yes, delete',
-        }).then((result) => {
-            if(result.isConfirmed){
-                window.location.href = url,
-
-                Swal.fire(
-                    'Deleted!',
-                    'Category is deleted.',
-                    'success',
-                )
-            }
-        })
-    });
-</script>
-
-@endpush

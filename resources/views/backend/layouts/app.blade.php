@@ -81,8 +81,9 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('backend/dist/js/adminlte.js') }}"></script>
 
-@stack('scripts')
 
 {!! Toastr::message() !!}
+
+@stack('script')
 </body>
 </html>
