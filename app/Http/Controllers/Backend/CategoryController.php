@@ -96,14 +96,15 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        return 'category destroy';
+         if($category->delete())
+         {
+             Toastr::success('Category deleted successfully.', 'Success');
+         }else{
+             Toastr::error('Category not deleted.', 'Error');
+         }
 
-
-        // if($category->destroy())
-        // {
-        //     return redirect()->route('admin.category.index')->with('success','Category deleted successfully.');
-        // }
+        return redirect()->route('admin.category.index');
     }
 }
