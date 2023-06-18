@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\DataTables\CategoriesDataTable;
 use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
@@ -18,11 +19,13 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): View|Application|Factory
+    public function index(CategoriesDataTable $dataTable): View|Application|Factory
     {
-        $categories = Category::latest()->get();
+        // $categories = Category::latest()->paginate(5);
 
-        return view('backend.modules.category.index', compact('categories'));
+        // return view('backend.modules.category.index', compact('categories'));
+
+        return $dataTable->render('backend.modules.category.index');
     }
 
     /**

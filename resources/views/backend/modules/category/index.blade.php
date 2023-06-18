@@ -13,7 +13,9 @@
         <a href="{{ route('admin.category.create') }}" class="btn btn-sm btn-primary m-0"><i class="fas fa-plus"></i> Add new category</a>
     </div>
 
-    <table class="table table-sm table-striped table-hover table-bordered">
+    {{ $dataTable->table() }}
+
+    {{-- <table class="table table-sm table-striped table-hover table-bordered">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -69,6 +71,12 @@
                 </tr>
             @endforelse
         </tbody>
-      </table>
+      </table> --}}
+
+      {{-- {{ $categories->links('pagination::bootstrap-5') }} --}}
+
+      @push('scripts')
+    {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+@endpush
 
 </x-app-layout>
