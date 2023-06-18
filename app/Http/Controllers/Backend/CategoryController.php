@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
 
@@ -45,8 +46,12 @@ class CategoryController extends Controller
 
         if($category->save())
         {
-            return redirect()->route('admin.category.create')->with('success','Category created successfully.');
+            Toastr::success('Category created successfully.', 'Success');
+        }else{
+            Toastr::error('Category not created.', 'Error');
         }
+
+        return redirect()->route('admin.category.create');
     }
 
     /**
@@ -54,7 +59,7 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return 'category show' . $id;
     }
 
     /**
@@ -79,16 +84,22 @@ class CategoryController extends Controller
 
         if($category->update())
         {
-            return redirect()->route('admin.category.index')->with('success','Category updated successfully.');
+            Toastr::success('Category updated successfully.', 'Success');
+        }else{
+            Toastr::error('Category not updated.', 'Error');
         }
+
+        return redirect()->route('admin.category.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        dd($category);
+        return 'category destroy';
+
+
         // if($category->destroy())
         // {
         //     return redirect()->route('admin.category.index')->with('success','Category deleted successfully.');

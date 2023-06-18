@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{{ asset('backend/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('backend/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('backend/dist/css/adminlte.min.css') }}">
 </head>
@@ -68,14 +70,19 @@
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
 <script src="{{ asset('backend/plugins/jquery/jquery.min.js') }}"></script>
+<!-- Sweetalert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Bootstrap -->
 <script src="{{ asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- overlayScrollbars -->
 <script src="{{ asset('backend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+<!-- Toastr -->
+<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('backend/dist/js/adminlte.js') }}"></script>
-<!-- AdminLTE for demo purposes -->
-{{--<script src="{{ asset('public/backend/dist/js/demo.js') }}"></script>--}}
 
+@stack('scripts')
+
+{!! Toastr::message() !!}
 </body>
 </html>

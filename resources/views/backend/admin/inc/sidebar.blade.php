@@ -32,9 +32,10 @@
 
                 <!-- Categories -->
                 <li class="nav-item {{ request()->routeIs('admin.category.index') ? 'menu-open' :
-                (request()->routeIs('admin.category.create') ? 'menu-open' : '') }}">
+                (request()->routeIs('admin.category.create') ? 'menu-open' : (request()->routeIs('admin.category.edit') ? 'menu-open' : '')) }}">
                     <a href="#" class="nav-link {{ request()->routeIs('admin.category.index') ? 'active' :
-                    (request()->routeIs('admin.category.create') ? 'active' : '') }}">
+                    (request()->routeIs('admin.category.create') ? 'active' :
+                    (request()->routeIs('admin.category.edit') ? 'active' : '')) }}">
                         <i class="nav-icon far fa-envelope"></i>
                         <p>
                             Categories
