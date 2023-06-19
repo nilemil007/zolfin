@@ -59,6 +59,35 @@
                     </ul>
                 </li>
 
+                <!-- Posts -->
+                <li class="nav-item {{ request()->routeIs('admin.post.index') ? 'menu-open' :
+                (request()->routeIs('admin.post.create') ? 'menu-open' : (request()->routeIs('admin.post.edit') ? 'menu-open' : '')) }}">
+                    <a href="#" class="nav-link {{ request()->routeIs('admin.post.index') ? 'active' :
+                    (request()->routeIs('admin.post.create') ? 'active' :
+                    (request()->routeIs('admin.post.edit') ? 'active' : '')) }}">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Posts
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.post.create') }}"
+                               class="nav-link {{ request()->routeIs('admin.post.create') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add new</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.post.index') }}" class="nav-link {{ request()->routeIs('admin.post.index') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>All posts</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="nav-header">EXAMPLES</li>
 
                 <li class="nav-item">

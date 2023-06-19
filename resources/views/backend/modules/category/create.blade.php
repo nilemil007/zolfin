@@ -18,7 +18,7 @@
 
             <div class="input-group mb-3">
                 <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter category name" required autofocus>
-                <button class="btn btn-outline-primary ml-2" type="submit" id="button-addon2">Create category</button>
+                <button class="btn btn-primary ml-2" type="submit" id="button-addon2"><i class="fas fa-plus"></i> Create category</button>
             </div>
 
             <!-- Validation messages -->

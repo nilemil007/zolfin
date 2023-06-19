@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\Backend\DashboardController;
-use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth','verified','role:admin'])->prefix('admin')->name('admin.')->group(function(){
@@ -12,5 +13,8 @@ Route::middleware(['auth','verified','role:admin'])->prefix('admin')->name('admi
     Route::resources([
         // Category
         'category' => CategoryController::class,
+
+        // Posts
+        'post' => PostController::class,
     ]);
 });
