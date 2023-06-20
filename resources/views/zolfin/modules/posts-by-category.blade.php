@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center">
-                    <h2 class="mt-0 t-text-light">Blog & News</h2>
+                    <h2 class="mt-0 t-text-light">{{ $category->name }}</h2>
                     <ul
                         class="t-list breadcrumbs d-flex justify-content-center align-items-center"
                     >
@@ -79,7 +79,7 @@
                                                 </a>
                                             </li>
                                             <li class="blog-post__footer-list t-mb-15 t-mr-15">
-                                                <a href="{{ route('posts.by.category', $post->category->id) }}" class="t-link t-link--alpha sm-text blog-post__footer-link text-capitalize">
+                                                <a href="#" class="t-link t-link--alpha sm-text blog-post__footer-link text-capitalize">
                                                     <i class="las la-tags"></i>
                                                     {{ $post->category->name }}
                                                 </a>

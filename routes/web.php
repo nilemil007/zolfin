@@ -9,6 +9,9 @@ Route::controller(ZolfinController::class)->group(function (){
 
     // Blog page route
     Route::get('/blog', 'blog')->name('blog');
+
+    // Posts by category
+    Route::get('posts-by-category/{category}', 'postsByCategory')->name('posts.by.category');
 });
 
 require __DIR__.'/auth.php';

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Zolfin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -22,5 +23,13 @@ class ZolfinController extends Controller
     {
         $posts = Post::all();
         return view('zolfin.modules.blog', compact('posts'));
+    }
+
+    // Posts by category
+    public function postsByCategory(Category $category)
+    {
+        $posts = Post::where('category_id',$category->id)->latest()->get();
+
+        return view('zolfin.modules.posts-by-category', compact('posts','category'));
     }
 }
