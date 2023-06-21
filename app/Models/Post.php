@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 
+/**
+ * @method static where(string $string, mixed $id)
+ * @method static latest()
+ */
 class Post extends Model
 {
     use HasFactory;

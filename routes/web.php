@@ -12,6 +12,9 @@ Route::controller(ZolfinController::class)->group(function (){
 
     // Posts by category
     Route::get('posts-by-category/{category}', 'postsByCategory')->name('posts.by.category');
+
+    // Single blog page
+    Route::get('single-blog/{post}','singleBlog')->name('single.blog');
 });
 
 require __DIR__.'/auth.php';

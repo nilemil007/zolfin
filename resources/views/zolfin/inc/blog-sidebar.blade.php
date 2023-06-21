@@ -1,18 +1,9 @@
 <div class="col-lg-4">
     <aside>
         <div class="widget">
-            <form
-                action="#"
-                class="newsletter border t-pt-5 t-pb-5 t-pl-15 t-pr-10"
-            >
-                <input
-                    type="text"
-                    placeholder="search here"
-                    class="w-100 newsletter__input"
-                />
-                <button
-                    class="newsletter__button bttn bttn-round bttn-alpha bttn-sm text-uppercase border-0"
-                >
+            <form action="#" class="newsletter border t-pt-5 t-pb-5 t-pl-15 t-pr-10">
+                <input type="text" placeholder="search here" class="w-100 newsletter__input"/>
+                <button class="newsletter__button bttn bttn-round bttn-alpha bttn-sm text-uppercase border-0">
                     search
                 </button>
             </form>
@@ -21,63 +12,25 @@
             <h4 class="mt-0 text-capitalize widget-title">
                 recent post
             </h4>
+
             <ul class="t-list recent-post">
-                <li class="recent-post__list">
-                    <div class="recent-post__post row no-gutters">
-                        <div class="recent-post__img col-4">
-                            <a href="#" class="t-link w-100">
-                                <img src="assets/img/recent-post-1.png" alt="zolfin" class="img-fluid recent-post__img-is w-100">
-                            </a>
+                @forelse($recentPost->take(4) as $post)
+                    <li class="recent-post__list">
+                        <div class="recent-post__post row no-gutters">
+                            <div class="recent-post__img col-4">
+                                <a href="{{ route('single.blog', $post->id) }}" class="t-link w-100">
+                                    <img src="{{ $post->thumbnail }}" alt="zolfin" class="img-fluid recent-post__img-is w-100">
+                                </a>
+                            </div>
+                            <div class="recent-post__content col-8">
+                                <a href="{{ route('single.blog', $post->id) }}" class="recent-post__title t-link t-link--alpha">
+                                    {{ $post->title }}
+                                </a>
+                            </div>
                         </div>
-                        <div class="recent-post__content col-8">
-                            <a href="#" class="recent-post__title t-link t-link--alpha">
-                                Twice profit than before you ever got in business
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="recent-post__list">
-                    <div class="recent-post__post row no-gutters">
-                        <div class="recent-post__img col-4">
-                            <a href="#" class="t-link w-100">
-                                <img src="assets/img/recent-post-2.png" alt="zolfin" class="img-fluid recent-post__img-is w-100">
-                            </a>
-                        </div>
-                        <div class="recent-post__content col-8">
-                            <a href="#" class="recent-post__title t-link t-link--alpha">
-                                Twice profit than before you ever got in business
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="recent-post__list">
-                    <div class="recent-post__post row no-gutters">
-                        <div class="recent-post__img col-4">
-                            <a href="#" class="t-link w-100">
-                                <img src="assets/img/recent-post-3.png" alt="zolfin" class="img-fluid recent-post__img-is w-100">
-                            </a>
-                        </div>
-                        <div class="recent-post__content col-8">
-                            <a href="#" class="recent-post__title t-link t-link--alpha">
-                                Twice profit than before you ever got in business
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="recent-post__list">
-                    <div class="recent-post__post row no-gutters">
-                        <div class="recent-post__img col-4">
-                            <a href="#" class="t-link w-100">
-                                <img src="assets/img/recent-post-4.png" alt="zolfin" class="img-fluid recent-post__img-is w-100">
-                            </a>
-                        </div>
-                        <div class="recent-post__content col-8">
-                            <a href="#" class="recent-post__title t-link t-link--alpha">
-                                Twice profit than before you ever got in business
-                            </a>
-                        </div>
-                    </div>
-                </li>
+                    </li>
+                @empty
+                @endforelse
             </ul>
         </div>
         <div class="widget widget--bg t-bg-light-2 t-mt-50">
