@@ -105,7 +105,7 @@
                 </div>
 
                 <!-- Blog sidebar -->
-                @include('zolfin.inc.blog-sidebar')
+                @include('zolfin.inc.blog-sidebar', $recentPost)
             </div>
         </div>
     </div>

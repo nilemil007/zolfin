@@ -23,16 +23,17 @@ class ZolfinController extends Controller
     public function blog(): View|Application|Factory
     {
         $posts = Post::latest()->paginate(3);
-        $recentPost = Post::latest()->get();
+        $recentPost = Post::latest()->take(4)->get();
         return view('zolfin.modules.blog', compact('posts','recentPost'));
     }
 
     // Posts by category
     public function postsByCategory(Category $category): View|Application|Factory
     {
-        $posts = Post::where('category_id',$category->id)->latest()->paginate(3);
+        $posts = Post::where('category_id', $category->id)->latest()->paginate(3);
+        $recentPost = Post::where('category_id', $category->id)->take(4)->get();
 
-        return view('zolfin.modules.posts-by-category', compact('posts','category'));
+        return view('zolfin.modules.posts-by-category', compact('posts','category','recentPost'));
     }
 
     // Single blog

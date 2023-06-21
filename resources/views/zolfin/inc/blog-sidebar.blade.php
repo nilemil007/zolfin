@@ -14,7 +14,7 @@
             </h4>
 
             <ul class="t-list recent-post">
-                @forelse($recentPost->take(4) as $post)
+                @forelse($recentPost as $post)
                     <li class="recent-post__list">
                         <div class="recent-post__post row no-gutters">
                             <div class="recent-post__img col-4">
