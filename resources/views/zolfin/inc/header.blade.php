@@ -23,7 +23,9 @@
                         </span>
                     </div>
                     <ul class="t-list zol-menu">
-                        <li class="zol-menu__list {{ request()->routeIs('blog') ? 'zol-menu__current' : '' }}">
+                        <li class="zol-menu__list {{ request()->routeIs('blog') ? 'zol-menu__current' :
+                            ( request()->routeIs('posts.by.category') ? 'zol-menu__current' :
+                            ( request()->routeIs('posts.by.user') ? 'zol-menu__current' : '' ) ) }}">
                             <a href="{{ route('blog') }}" class="t-link zol-menu__link">blog</a>
                         </li>
                         <li class="zol-menu__list">

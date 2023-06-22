@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center">
-                    <h2 class="mt-0 t-text-light">Blog & News</h2>
+                    <h2 class="mt-0 t-text-light">{{ $user->name }}</h2>
                     <ul class="t-list breadcrumbs d-flex justify-content-center align-items-center">
                         <li class="breadcrumbs__list">
                             <a href="#" class="t-link breadcrumbs__link t-link--light-alpha text-capitalize">
@@ -45,7 +45,7 @@
                                     </div>
                                     <div class="blog-post__body">
                                         <h3 class="blog-post__title">
-                                            <a href="{{ route('single.blog', $post->id) }}" class="t-link t-link--alpha blog-post__title-link">
+                                            <a href="blog-details.html" class="t-link t-link--alpha blog-post__title-link">
                                                 {{ $post->title }}
                                             </a>
                                         </h3>
@@ -71,7 +71,7 @@
                                                 </a>
                                             </li>
                                             <li class="blog-post__footer-list t-mb-15 t-mr-15">
-                                                <a href="{{ route('posts.by.category', $post->id) }}" class="t-link t-link--alpha sm-text blog-post__footer-link text-capitalize">
+                                                <a href="{{ route('posts.by.category', $post->category->id) }}" class="t-link t-link--alpha sm-text blog-post__footer-link text-capitalize">
                                                     <i class="las la-tags"></i>
                                                     {{ $post->category->name }}
                                                 </a>
@@ -89,8 +89,8 @@
                                                     href="#"
                                                     class="t-link t-link--alpha sm-text blog-post__footer-link text-capitalize"
                                                 >
-                                                    <i class="las la-eye"></i>
-                                                    {{ $post->views }} Views
+                                                    <i class="las la-clock"></i>
+                                                    8 min read
                                                 </a>
                                             </li>
                                         </ul>

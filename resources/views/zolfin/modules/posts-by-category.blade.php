@@ -57,7 +57,7 @@
                                     <div class="blog-post__footer t-pb-30 t-pt-20">
                                         <ul class="t-list d-flex align-items-center blog-post__footer flex-wrap">
                                             <li class="blog-post__footer-list t-mb-15 t-mr-15">
-                                                <a href="#" class="t-link blog-post__author d-flex align-items-center">
+                                                <a href="{{ route('posts.by.user', $post->user->id) }}" class="t-link blog-post__author d-flex align-items-center">
                                                     <span class="blog-post__author-img t-mr-8">
                                                         <img
                                                             src="{{ $post->user->images }}"
@@ -71,7 +71,7 @@
                                                 </a>
                                             </li>
                                             <li class="blog-post__footer-list t-mb-15 t-mr-15">
-                                                <a href="#" class="t-link t-link--alpha sm-text blog-post__footer-link text-capitalize">
+                                                <a href="{{ route('posts.by.category', $post->category->id) }}" class="t-link t-link--alpha sm-text blog-post__footer-link text-capitalize">
                                                     <i class="las la-tags"></i>
                                                     {{ $post->category->name }}
                                                 </a>

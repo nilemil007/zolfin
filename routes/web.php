@@ -15,6 +15,9 @@ Route::controller(ZolfinController::class)->group(function (){
 
     // Single blog page
     Route::get('single-blog/{post}','singleBlog')->name('single.blog');
+
+    // Posts by user
+    Route::get('posts-by-user/{user}', 'postsByUser')->name('posts.by.user');
 });
 
 require __DIR__.'/auth.php';

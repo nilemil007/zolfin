@@ -78,8 +78,8 @@
                                             </li>
                                             <li class="blog-post__footer-list t-mb-15 t-mr-15">
                                                 <a href="#" class="t-link t-link--alpha sm-text blog-post__footer-link text-capitalize">
-                                                    <i class="las la-clock"></i>
-                                                    8 min read
+                                                    <i class="las la-eye"></i>
+                                                    {{ $post->views }} Views
                                                 </a>
                                             </li>
                                         </ul>
@@ -151,6 +151,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="t-pl-30 t-pr-30 t-pt-50 t-pb-50 border t-mt-70">
                                 <div id="comments" class="st-comments-area">
                                     <h4 class="mt-0 t-mb-30 text-capitalize">
@@ -257,6 +258,7 @@
                                     </ul>
                                 </div>
                             </div>
+
                             <div class="t-pl-30 t-pr-30 t-pt-50 t-pb-50 border t-mt-70">
                                 <div class="st-comments-area">
                                     <h4 class="mt-0 t-mb-30 text-capitalize">
@@ -277,6 +279,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-4">
                     <aside>
                         <div class="widget">

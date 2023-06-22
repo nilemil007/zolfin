@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('slug');
             $table->text('content');
             $table->string('thumbnail');
+            $table->json('tags')->nullable();
             $table->integer('views')->default(0);
             $table->timestamps();
         });

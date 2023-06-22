@@ -16,6 +16,8 @@ class Post extends Model
 {
     use HasFactory;
 
+//    protected $with = ['user', 'category'];
+
     protected $fillable = [
         'user_id',
         'category_id',
@@ -24,6 +26,7 @@ class Post extends Model
         'content',
         'thumbnail',
         'views',
+        'tags',
     ];
 
     /**
