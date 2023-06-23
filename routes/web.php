@@ -18,6 +18,9 @@ Route::controller(ZolfinController::class)->group(function (){
 
     // Posts by user
     Route::get('posts-by-user/{user}', 'postsByUser')->name('posts.by.user');
+
+    // Search page route
+    Route::get('/search', 'search')->name('search');
 });
 
 require __DIR__.'/auth.php';

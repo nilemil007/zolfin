@@ -5,7 +5,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center">
                     <h2 class="mt-0 t-text-light text-capitalize">
-                        blog details
+                        {{ $post->title }}
                     </h2>
                     <ul class="t-list breadcrumbs d-flex justify-content-center align-items-center">
                         <li class="breadcrumbs__list">
@@ -282,23 +282,16 @@
 
                 <div class="col-lg-4">
                     <aside>
+                        <!-- Search -->
                         <div class="widget">
-                            <form
-                                action="#"
-                                class="newsletter border t-pt-5 t-pb-5 t-pl-15 t-pr-10"
-                            >
-                                <input
-                                    type="text"
-                                    placeholder="search here"
-                                    class="w-100 newsletter__input"
-                                />
-                                <button
-                                    class="newsletter__button bttn bttn-round bttn-alpha bttn-sm text-uppercase border-0"
-                                >
+                            <form action="{{ route('search') }}" class="newsletter border t-pt-5 t-pb-5 t-pl-15 t-pr-10">
+                                <input type="text" name="search" placeholder="search here" class="w-100 newsletter__input"/>
+                                <button type="submit" class="newsletter__button bttn bttn-round bttn-alpha bttn-sm text-uppercase border-0">
                                     search
                                 </button>
                             </form>
                         </div>
+
                         <div class="widget widget--bg t-bg-light-2 t-mt-50">
                             <h4 class="mt-0 text-capitalize widget-title">
                                 recent post

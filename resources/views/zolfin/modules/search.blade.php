@@ -5,20 +5,16 @@
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center">
                     <h2 class="mt-0 t-text-light">
-                        @if (request('search'))
                         Search result for: {{ request('search') }}
-                        @else
-                        Blog & News
-                        @endif
                     </h2>
                     <ul class="t-list breadcrumbs d-flex justify-content-center align-items-center">
                         <li class="breadcrumbs__list">
-                            <a href="#" class="t-link breadcrumbs__link t-link--light-alpha text-capitalize">
+                            <a href="{{ route('home') }}" class="t-link breadcrumbs__link t-link--light-alpha text-capitalize">
                                 home
                             </a>
                         </li>
                         <li class="breadcrumbs__list">
-                            <a href="#" class="t-link breadcrumbs__link t-link--light-alpha text-capitalize">
+                            <a href="{{ route('blog') }}" class="t-link breadcrumbs__link t-link--light-alpha text-capitalize">
                                 blog
                             </a>
                         </li>
@@ -89,12 +85,8 @@
                                                 </a>
                                             </li>
                                             <li
-                                                class="blog-post__footer-list t-mb-15 t-mr-15"
-                                            >
-                                                <a
-                                                    href="#"
-                                                    class="t-link t-link--alpha sm-text blog-post__footer-link text-capitalize"
-                                                >
+                                                class="blog-post__footer-list t-mb-15 t-mr-15">
+                                                <a href="#" class="t-link t-link--alpha sm-text blog-post__footer-link text-capitalize">
                                                     <i class="las la-eye"></i>
                                                     {{ $post->views }} Views
                                                 </a>

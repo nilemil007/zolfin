@@ -24,8 +24,8 @@ class ZolfinController extends Controller
     public function blog(): View|Application|Factory
     {
         $posts = Post::with('category','user')->latest()->paginate(3);
-        $recentPost = Post::latest()->take(4)->get();
-        return view('zolfin.modules.blog', compact('posts','recentPost'));
+
+        return view('zolfin.modules.blog', compact('posts'));
     }
 
     // Posts by category
@@ -52,5 +52,19 @@ class ZolfinController extends Controller
         $post->increment('views');
 
         return view('zolfin.modules.single-blog', compact('post'));
+    }
+
+    // Search page
+    public function search(Request $request): View|Application|Factory
+    {
+        $posts = Post::with('category','user')
+        ->where('title', 'like', '%'.$request->search.'%')
+        ->orWhere('content','like','%'.$request->search.'%')
+        ->latest()
+        ->paginate(3);
+
+        $posts->appends($request->all());
+
+        return view('zolfin.modules.search', compact('posts'));
     }
 }
