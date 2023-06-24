@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 
 /**
  * @method static create(array $only)
+ * @method static latest()
  */
 class Category extends Model
 {

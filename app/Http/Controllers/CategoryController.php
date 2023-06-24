@@ -17,7 +17,7 @@ class CategoryController extends Controller
      */
     public function index(): View|Application|Factory
     {
-         $categories = Category::latest()->paginate(5);
+         $categories = Category::latest()->get();
 
          return view('backend.modules.category.index', compact('categories'));
     }
@@ -27,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create(): View|Application|Factory
     {
-        return view('backend.modules.category.create');
+        //
     }
 
     /**
@@ -46,7 +46,7 @@ class CategoryController extends Controller
             Toastr::error('Category not created.', 'Error');
         }
 
-        return redirect()->route('admin.category.create');
+        return redirect()->route('admin.category.index');
     }
 
     /**

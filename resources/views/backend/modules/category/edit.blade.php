@@ -9,23 +9,22 @@
         </div>
     </x-slot:content-header>
 
-    <form class="row g-3" action="{{ route('admin.category.update', $category->id) }}" method="post">
+    <form class="mt-5" action="{{ route('admin.category.update', $category->id) }}" method="post">
         @csrf
         @method('PUT')
 
         <!-- Name -->
-        <div class="col-md-6">
-            <label for="categoryName" class="form-label">Name</label>
-
-            <div class="input-group mb-3">
-                <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{ $category->name }}" placeholder="Enter category name" aria-label="Enter category name" id="categoryName" required>
-                <button class="btn btn-primary ml-2" type="submit"><i class="fas fa-sync-alt"></i> Update category</button>
+        <div class="row mb-3">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-10">
+                <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{ $category->name }}" placeholder="Enter category name" id="categoryName" required>
+                <!-- Validation messages -->
+                @error('name') <small class="text-danger">{{ $message }}</small> @enderror
             </div>
-
-            <!-- Validation messages -->
-            @error('name') <small class="text-danger">{{ $message }}</small> @enderror
         </div>
-    </form>
 
+        <!-- Update button -->
+        <button class="btn btn-primary mt-4" type="submit"><i class="fas fa-sync-alt"></i> Update</button>
+    </form>
 
 </x-app-layout>

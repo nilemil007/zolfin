@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('thumbnail');
             $table->json('tags')->nullable();
             $table->integer('views')->default(0);
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
