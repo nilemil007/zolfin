@@ -29,7 +29,7 @@
         <div class="col-md-3">
             <!-- Publish -->
             <div class="card">
-                <div class="card-header">
+                <div class="card-header" style="font-weight: bold;">
                     Publish
                 </div>
                 <div class="card-body">
