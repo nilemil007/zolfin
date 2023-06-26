@@ -36,7 +36,19 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        return 'post store method.';
+        $data = $request->validate([
+            'title' => ['required','min:3','max:150','string'],
+            'content' => ['required','min:3'],
+            'status' => ['required'],
+            'post_category' => ['required'],
+            'post_tags' => ['required'],
+            'post_thumbnail' => ['required','image','mimes:jpg,png,jpeg'],
+        ]);
+
+        if ($request->hasFile('post_thumbnail'))
+        {
+            
+        }
     }
 
     /**
