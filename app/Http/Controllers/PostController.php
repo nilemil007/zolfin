@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Post;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
-use Illuminate\Foundation\Application;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
+use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -40,15 +42,30 @@ class PostController extends Controller
             'title' => ['required','min:3','max:150','string'],
             'content' => ['required','min:3'],
             'status' => ['required'],
-            'post_category' => ['required'],
-            'post_tags' => ['required'],
-            'post_thumbnail' => ['required','image','mimes:jpg,png,jpeg'],
+            'category_id' => ['required'],
+            'tags' => ['required'],
+            'thumbnail' => ['required','image','mimes:jpg,png,jpeg'],
         ]);
 
-        if ($request->hasFile('post_thumbnail'))
+        $data['user_id'] = Auth::id();
+
+        if ($request->hasFile('thumbnail'))
         {
-            
+            $thumbnail = 'post'.$request->thumbnail->hashname();
+            $request->thumbnail->storeAs('posts/thumbnails', $thumbnail);
+            $data['thumbnail'] = $thumbnail;
+        }else{
+            unset($data['thumbnail']);
         }
+
+        if (Post::create($data)) {
+            Toastr::success('New post created successfully.', 'Success');
+        } else {
+            Toastr::error('Post not created.', 'Error');
+        }
+
+        return redirect()->route('admin.post.index');
+
     }
 
     /**

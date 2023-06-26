@@ -9,6 +9,14 @@
         </div>
     </x-slot:content-header>
 
+
+    @foreach (errors()->any() as $error)
+        <li class="text-danger">{{ $error }}</li>
+    @endforeach
+
+
+
+
     <form class="row g-3" action="{{ route('admin.post.store') }}" method="post" enctype="multipart/form-data">
         @csrf
 
@@ -22,7 +30,7 @@
 
             <!-- Content -->
             <div class="mb-3">
-                <textarea name="content"></textarea>
+                <textarea name="content" required></textarea>
             </div>
         </div>
 
@@ -60,7 +68,7 @@
                 <div class="card-body overflow-auto" style="max-height: 230px;">
                     @forelse($categories as $category)
                         <div class="form-check">
-                            <input name="post_category" class="form-check-input" type="checkbox" value="{{ $category->id }}" id="category_checkbox_{{ $category->id }}">
+                            <input name="category_id" class="form-check-input" type="checkbox" value="{{ $category->id }}" id="category_checkbox_{{ $category->id }}">
                             <label class="form-check-label" for="category_checkbox_{{ $category->id }}">
                                 {{ $category->name }}
                             </label>
@@ -76,7 +84,7 @@
                     Tags
                 </div>
                 <div class="card-body">
-                    <input type="text" class="form-control" name="post_tags"/>
+                    <input type="text" class="form-control" name="tags"/>
                 </div>
             </div>
 
@@ -88,7 +96,7 @@
                 <div class="card-body">
                     <div class="input-group mb-3">
                         <div class="custom-file">
-                            <input name="post_thumbnail" onchange="loadFile(event)" type="file" accept="image/jpg,jpeg,png" class="custom-file-input" id="post_thumbnail" aria-describedby="inputGroupFileAddon01">
+                            <input name="thumbnail" onchange="loadFile(event)" type="file" accept="image/jpg,jpeg,png" class="custom-file-input" id="post_thumbnail" aria-describedby="inputGroupFileAddon01">
                             <label class="custom-file-label" for="post_thumbnail">Choose file</label>
                         </div>
                     </div>
