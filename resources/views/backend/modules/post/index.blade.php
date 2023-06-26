@@ -22,10 +22,11 @@
             <th scope="col">Thumbnail</th>
             <th scope="col">User</th>
             <th scope="col">Category</th>
-            <th scope="col">title</th>
-            <th scope="col">content</th>
-            <th scope="col">tags</th>
-            <th scope="col">views</th>
+            <th scope="col">Title</th>
+            <th scope="col">Content</th>
+            <th scope="col">Tags</th>
+            <th scope="col">Views</th>
+            <th scope="col">Status</th>
             <th scope="col">Action</th>
         </tr>
         </thead>
@@ -34,7 +35,8 @@
             <tr>
                 <th scope="row">{{ ++$sl }}</th>
                 <td>
-                    <img src="{{ $post->thumbnail }}" alt="" width="60">
+{{--                    {{ dd($post->thumbnail) }}--}}
+                    <img src="{{ $post->thumbnail }}" alt="post thumbnail" width="60">
                 </td>
                 <td>{{ $post->user->name }}</td>
                 <td>{{ $post->category->name }}</td>
@@ -42,10 +44,12 @@
                 <td>{{ \Illuminate\Support\Str::limit($post->content, 100) }}</td>
                 <td>{{ $post->tags }}</td>
                 <td>{{ $post->views }}</td>
+                <td>{{ $post->status }}</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                         <!-- Edit button -->
-                        <a href="{{ route('admin.category.edit', $post->id) }}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
+                        <a href="{{ route('admin.post.edit', $post->id) }}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
+
                         <!-- Delete button -->
                         <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delCategory{{ $post->id }}"><i class="fas fa-trash-alt"></i></button>
                     </div>
@@ -72,7 +76,7 @@
                 </div>
 
                 <!-- Delete category form -->
-                <form id="cat_delete{{ $post->id }}" action="{{ route('admin.category.destroy', $post->id) }}" method="POST" hidden="hidden">
+                <form id="cat_delete{{ $post->id }}" action="{{ route('admin.post.destroy', $post->id) }}" method="POST" hidden="hidden">
                     @csrf
                     @method('DELETE')
                 </form>

@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -36,36 +38,15 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        $data = $request->validate([
-            'title' => ['required','min:3','max:150','string'],
-            'content' => ['required','min:3'],
-            'status' => ['required'],
-            'category_id' => ['required'],
-            'tags' => ['required'],
-            'thumbnail' => ['required','image','mimes:jpg,png,jpeg'],
-        ]);
-
-        $data['user_id'] = Auth::id();
-
-        if ($request->hasFile('thumbnail'))
-        {
-            $thumbnail = 'post'.$request->thumbnail->hashname();
-            $request->thumbnail->storeAs('posts/thumbnails', $thumbnail);
-            $data['thumbnail'] = $thumbnail;
-        }else{
-            unset($data['thumbnail']);
-        }
-
-        if (Post::create($data)) {
+        if (Post::create($this->postValidation($request))) {
             Toastr::success('New post created successfully.', 'Success');
         } else {
             Toastr::error('Post not created.', 'Error');
         }
 
         return redirect()->route('admin.post.index');
-
     }
 
     /**
@@ -79,17 +60,25 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Post $post)
+    public function edit(Post $post): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        return 'post edit method.';
+        $categories = Category::all();
+
+        return view('backend/modules/post/edit', compact('post','categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Post $post): RedirectResponse
     {
-        return 'post update method.';
+        if ($post->update($this->postValidation($request))) {
+            Toastr::success('New post updated successfully.', 'Success');
+        } else {
+            Toastr::error('Post not updated.', 'Error');
+        }
+
+        return redirect()->route('admin.post.index');
     }
 
     /**
@@ -98,5 +87,33 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         return 'post destroy method.';
+    }
+
+    /**
+     * @param Request $request
+     * @return array
+     */
+    public function postValidation(Request $request)
+    {
+        $data = $request->validate([
+            'title' => ['required', 'min:3', 'max:150', 'string'],
+            'content' => ['required', 'min:3'],
+            'status' => ['required'],
+            'category_id' => ['required'],
+            'tags' => ['required'],
+            'thumbnail' => ['sometimes', 'image', 'mimes:jpg,png,jpeg'],
+        ]);
+
+        $data['user_id'] = Auth::id();
+
+        if ($request->hasFile('thumbnail')) {
+            $thumbnail = 'post.' . $request->thumbnail->hashname();
+            $request->thumbnail->storeAs('public/posts/thumbnails', $thumbnail);
+            $data['thumbnail'] = $thumbnail;
+        } else {
+            unset($data['thumbnail']);
+        }
+
+        return $data;
     }
 }

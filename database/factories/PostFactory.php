@@ -22,6 +22,7 @@ class PostFactory extends Factory
             'title' => fake()->sentence(5),
             'content' => fake()->realText(500),
             'thumbnail' => fake()->imageUrl(),
+            'status' => 'publish',
         ];
     }
 }

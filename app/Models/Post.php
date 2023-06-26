@@ -6,11 +6,14 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 /**
  * @method static where(string $string, mixed $id)
  * @method static latest()
+ * @method static create(array $data)
+ * @method static updateOrCreate()
  */
 class Post extends Model
 {
@@ -46,6 +49,14 @@ class Post extends Model
                 'title' => $title,
                 'slug' => Str::slug($title),
             ],
+        );
+    }
+
+    // Thumbnail
+    protected function thumbnail(): Attribute
+    {
+        return Attribute::make(
+            get: fn($thumbnail) =>  Storage::exists('public/posts/thumbnails/'.$thumbnail) ? asset('storage/posts/thumbnails/'.$thumbnail) : $thumbnail,
         );
     }
 

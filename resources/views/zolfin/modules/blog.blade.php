@@ -56,8 +56,7 @@
                                             </a>
                                         </h3>
                                         <p class="t-mt-30 t-text-heading">
-{{--                                            {{ \Illuminate\Support\Str::excerpt($post->content) }}--}}
-                                            {{ $post->content }}
+                                            {!! \Illuminate\Support\Str::limit($post->content, 500) !!}
                                         </p>
                                     </div>
                                     <div class="blog-post__footer t-pb-30 t-pt-20">
@@ -106,10 +105,6 @@
                         @empty
                             <h1>No posts found.</h1>
                         @endforelse
-
-                        <div class="col-12">
-                            {{ $posts->links('vendor.pagination.bootstrap-4') }}
-                        </div>
                     </div>
                 </div>
             </div>

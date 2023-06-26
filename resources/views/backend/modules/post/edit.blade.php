@@ -1,11 +1,11 @@
 <x-app-layout>
     <!-- Site Title -->
-    <x-slot:title>Add New Post</x-slot:title>
+    <x-slot:title>Edit Post</x-slot:title>
 
     <x-slot:content-header>
         <!-- Title -->
         <div class="col-sm-6">
-            <h1 class="m-0">Add New Post</h1>
+            <h1 class="m-0">Edit Post</h1>
         </div>
     </x-slot:content-header>
 
@@ -14,20 +14,19 @@
     @endif
 
 
-
-
-    <form class="row g-3" action="{{ route('admin.post.store') }}" method="post" enctype="multipart/form-data">
+    <form class="row g-3" action="{{ route('admin.post.update', $post->id) }}" method="post" enctype="multipart/form-data">
         @csrf
+        @method('PATCH')
 
         <div class="col-md-9">
             <!-- Name -->
             <div class="input-group mb-3">
-                <input id="postTitle" name="title" type="text" value="{{ old('title') }}" class="form-control" placeholder="Enter post title" autofocus>
+                <input id="postTitle" name="title" type="text" value="{{ old('title', $post->title) }}" class="form-control" placeholder="Enter post title" autofocus>
             </div>
 
             <!-- Content -->
             <div class="mb-3">
-                <textarea name="content">{{ old('content') }}</textarea>
+                <textarea name="content">{{ old('content', $post->content) }}</textarea>
             </div>
         </div>
 
@@ -39,21 +38,21 @@
                 </div>
                 <div class="card-body">
                     <div class="form-check">
-                        <input name="status" class="form-check-input" type="radio" value="publish" id="publish" checked>
+                        <input name="status" class="form-check-input" type="radio" value="publish" id="publish" {{ $post->status == 'publish' ? 'checked' : '' }}>
                         <label class="form-check-label" for="publish">
                             Publish
                         </label>
                     </div>
 
                     <div class="form-check">
-                        <input name="status" class="form-check-input" type="radio" value="draft" id="draft">
+                        <input name="status" class="form-check-input" type="radio" value="draft" id="draft" {{ $post->status == 'draft' ? 'checked' : '' }}>
                         <label class="form-check-label" for="draft">
                             Draft
                         </label>
                     </div>
                 </div>
                 <div class="card-footer d-flex justify-content-end">
-                    <button type="submit" class="btn btn-sm btn-info">Publish</button>
+                    <button type="submit" class="btn btn-sm btn-info">Update & Publish</button>
                 </div>
             </div>
 
@@ -65,7 +64,7 @@
                 <div class="card-body overflow-auto" style="max-height: 230px;">
                     @forelse($categories as $category)
                         <div class="form-check">
-                            <input name="category_id" class="form-check-input" type="checkbox" value="{{ $category->id }}" id="category_checkbox_{{ $category->id }}">
+                            <input name="category_id" class="form-check-input" type="checkbox" value="{{ $category->id }}" id="category_checkbox_{{ $category->id }}" {{ $post->category->id == $category->id ? 'checked' : '' }}>
                             <label class="form-check-label" for="category_checkbox_{{ $category->id }}">
                                 {{ $category->name }}
                             </label>
@@ -81,7 +80,7 @@
                     Tags
                 </div>
                 <div class="card-body">
-                    <input type="text" class="form-control" name="tags"/>
+                    <input type="text" class="form-control" name="tags" value="{{ $post->tags }}"/>
                 </div>
             </div>
 
@@ -92,7 +91,11 @@
                 </div>
                 <div class="card-body">
                     <input name="thumbnail" type="file" accept="image/*" onchange="loadFile(event)">
-                    <img class="mt-2" id="output" width="100%"/>
+                    @if(!empty($post->thumbnail))
+                        <img src="{{ $post->thumbnail }}" class="mt-2" id="output" width="100%"/>
+                    @else
+                        <img class="mt-2" id="output" width="100%"/>
+                    @endif
                 </div>
             </div>
         </div>

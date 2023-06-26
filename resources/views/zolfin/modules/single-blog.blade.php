@@ -87,7 +87,7 @@
 
                                     <h3>{{ $post->title }}</h3>
 
-                                    <p class="t-mt-30 t-text-heading">{{ $post->content }}</p>
+                                    <p class="t-mt-30 t-text-heading">{!! $post->content !!}</p>
                                 </div>
 
                                 <div class="t-mt-50">
