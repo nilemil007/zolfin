@@ -38,11 +38,9 @@
             </form>
         </div>
         <div class="col-md-8">
-{{--            <div class="mb-3 d-flex justify-content-end">--}}
-{{--                <a href="{{ route('admin.category.create') }}" class="btn btn-sm btn-primary m-0"><i class="fas fa-plus"></i> Add new category</a>--}}
-{{--            </div>--}}
 
-            <table id="tbl_categories" class="table table-sm table-striped table-hover table-bordered">
+            <div class="table-responsive">
+                <table id="tbl_categories" class="table table-sm table-striped table-hover table-bordered">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -99,6 +97,7 @@
                 @endforelse
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 

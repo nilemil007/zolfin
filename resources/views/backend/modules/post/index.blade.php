@@ -15,7 +15,8 @@
         </a>
     </div>
 
-    <table id="tbl_posts" class="table table-sm table-striped table-hover table-bordered">
+    <div class="table-responsive">
+        <table id="tbl_posts" class="table table-sm table-striped table-hover table-bordered">
         <thead>
         <tr>
             <th scope="col">#</th>
@@ -83,6 +84,7 @@
         @endforeach
         </tbody>
     </table>
+    </div>
 
     @push('scripts')
         <script>
