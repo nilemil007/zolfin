@@ -31,12 +31,11 @@
         </tr>
         </thead>
         <tbody>
-        @forelse ($posts as $sl => $post)
+        @foreach($posts as $sl => $post)
             <tr>
                 <th scope="row">{{ ++$sl }}</th>
                 <td>
-{{--                    {{ dd($post->thumbnail) }}--}}
-                    <img src="{{ $post->thumbnail }}" alt="post thumbnail" width="60">
+                    <img src="{{ asset($post->thumbnail) }}" alt="post thumbnail" width="60">
                 </td>
                 <td>{{ $post->user->name }}</td>
                 <td>{{ $post->category->name }}</td>
@@ -65,27 +64,23 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                Are you sure to delete <strong>{{ $post->name }}</strong> category?
+                                Are you sure to delete this post?
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-danger" onclick="event.preventDefault();document.getElementById('cat_delete{{ $post->id }}').submit()">Yes, delete</button>
+                                <button type="button" class="btn btn-danger" onclick="event.preventDefault();document.getElementById('post_delete{{ $post->id }}').submit()">Yes, delete</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Delete category form -->
-                <form id="cat_delete{{ $post->id }}" action="{{ route('admin.post.destroy', $post->id) }}" method="POST" hidden="hidden">
+                <form id="post_delete{{ $post->id }}" action="{{ route('admin.post.destroy', $post->id) }}" method="POST" hidden="hidden">
                     @csrf
                     @method('DELETE')
                 </form>
             </tr>
-        @empty
-            <tr>
-                <td>No posts found.</td>
-            </tr>
-        @endforelse
+        @endforeach
         </tbody>
     </table>
 

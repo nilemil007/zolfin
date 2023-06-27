@@ -11,6 +11,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
@@ -40,7 +41,26 @@ class PostController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        if (Post::create($this->postValidation($request))) {
+        $information = $request->validate([
+            'title' => ['required', 'min:3', 'max:150', 'string'],
+            'content' => ['required', 'min:3'],
+            'status' => ['required'],
+            'category_id' => ['required'],
+            'tags' => ['required'],
+            'thumbnail' => ['sometimes', 'image', 'mimes:jpg,png,jpeg'],
+        ]);
+
+        $information['user_id'] = Auth::id();
+
+        if ($request->hasFile('thumbnail')) {
+            $thumbnail = 'post.' . $request->thumbnail->hashname();
+            $request->thumbnail->storeAs('public/posts/thumbnails', $thumbnail);
+            $information['thumbnail'] = $thumbnail;
+        } else {
+            unset($information['thumbnail']);
+        }
+
+        if (Post::create($information)) {
             Toastr::success('New post created successfully.', 'Success');
         } else {
             Toastr::error('Post not created.', 'Error');
@@ -72,7 +92,34 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post): RedirectResponse
     {
-        if ($post->update($this->postValidation($request))) {
+        // Field validation
+        $information = $request->validate([
+            'title' => ['required', 'min:3', 'max:150', 'string'],
+            'content' => ['required', 'min:3'],
+            'status' => ['required'],
+            'category_id' => ['required'],
+            'tags' => ['required'],
+            'thumbnail' => ['sometimes', 'image', 'mimes:jpg,png,jpeg'],
+        ]);
+
+        // Insert author id
+        $information['user_id'] = Auth::id();
+
+        if ($request->hasFile('thumbnail')) {
+
+            if ( File::exists( public_path( $post->thumbnail ) ) )
+            {
+                File::delete( $post->thumbnail );
+            }
+
+            $thumbnail = 'post.' . $request->thumbnail->hashname();
+            $request->thumbnail->storeAs('public/posts/thumbnails', $thumbnail);
+            $information['thumbnail'] = $thumbnail;
+        } else {
+            unset($information['thumbnail']);
+        }
+
+        if ($post->update($information)) {
             Toastr::success('New post updated successfully.', 'Success');
         } else {
             Toastr::error('Post not updated.', 'Error');
@@ -84,36 +131,20 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
+    public function destroy(Post $post): RedirectResponse
     {
-        return 'post destroy method.';
-    }
+        if ($post->delete()) {
 
-    /**
-     * @param Request $request
-     * @return array
-     */
-    public function postValidation(Request $request)
-    {
-        $data = $request->validate([
-            'title' => ['required', 'min:3', 'max:150', 'string'],
-            'content' => ['required', 'min:3'],
-            'status' => ['required'],
-            'category_id' => ['required'],
-            'tags' => ['required'],
-            'thumbnail' => ['sometimes', 'image', 'mimes:jpg,png,jpeg'],
-        ]);
+            if ( File::exists( public_path( $post->thumbnail ) ) )
+            {
+                File::delete( $post->thumbnail );
+            }
 
-        $data['user_id'] = Auth::id();
-
-        if ($request->hasFile('thumbnail')) {
-            $thumbnail = 'post.' . $request->thumbnail->hashname();
-            $request->thumbnail->storeAs('public/posts/thumbnails', $thumbnail);
-            $data['thumbnail'] = $thumbnail;
+            Toastr::success('Post deleted successfully.', 'Success');
         } else {
-            unset($data['thumbnail']);
+            Toastr::error('Post not deleted.', 'Error');
         }
 
-        return $data;
+        return redirect()->route('admin.post.index');
     }
 }

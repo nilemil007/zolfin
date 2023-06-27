@@ -92,7 +92,7 @@
                 <div class="card-body">
                     <input name="thumbnail" type="file" accept="image/*" onchange="loadFile(event)">
                     @if(!empty($post->thumbnail))
-                        <img src="{{ $post->thumbnail }}" class="mt-2" id="output" width="100%"/>
+                        <img src="{{ asset($post->thumbnail) }}" class="mt-2" id="output" width="100%"/>
                     @else
                         <img class="mt-2" id="output" width="100%"/>
                     @endif

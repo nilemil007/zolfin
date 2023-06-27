@@ -20,6 +20,7 @@ class Post extends Model
     use HasFactory;
 
 //    protected $with = ['user', 'category'];
+    protected string $filePath = 'storage/posts/thumbnails/';
 
     protected $fillable = [
         'user_id',
@@ -56,8 +57,7 @@ class Post extends Model
     protected function thumbnail(): Attribute
     {
         return Attribute::make(
-            get: fn($thumbnail) =>  Storage::exists('public/posts/thumbnails/'.$thumbnail) ? asset('storage/posts/thumbnails/'.$thumbnail) : $thumbnail,
-        );
+            get: fn($thumbnail) => empty($thumbnail) ? asset('zolfin/assets/img/no-thumbnail.jpg') : $this->filePath.$thumbnail,       );
     }
 
     public function user(): BelongsTo
