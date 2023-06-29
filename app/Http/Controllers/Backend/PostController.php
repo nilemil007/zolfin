@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
@@ -80,8 +81,11 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Post $post): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    public function edit($slug): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
+
+        $post = Post::firstWhere('slug',$slug);
+        dd($post);
         $categories = Category::all();
 
         return view('backend/modules/post/edit', compact('post','categories'));
@@ -120,7 +124,7 @@ class PostController extends Controller
         }
 
         if ($post->update($information)) {
-            Toastr::success('New post updated successfully.', 'Success');
+            Toastr::success('Post updated successfully.', 'Success');
         } else {
             Toastr::error('Post not updated.', 'Error');
         }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('content');
-            $table->string('thumbnail');
+            $table->string('thumbnail')->nullable();
             $table->string('tags')->nullable();
             $table->integer('views')->default(0);
             $table->string('status');

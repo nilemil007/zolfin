@@ -1,7 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
 
+namespace App\Http\Controllers\Backend;
+
+
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Contracts\View\Factory;
@@ -25,7 +28,7 @@ class CategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): View|Application|Factory
+    public function create()
     {
         //
     }

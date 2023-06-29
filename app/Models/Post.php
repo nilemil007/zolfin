@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @method static where(string $string, mixed $id)
@@ -19,7 +20,6 @@ class Post extends Model
 {
     use HasFactory;
 
-//    protected $with = ['user', 'category'];
     protected string $filePath = 'storage/posts/thumbnails/';
 
     protected $fillable = [
@@ -48,7 +48,7 @@ class Post extends Model
         return Attribute::make(
             set: fn ($title) => [
                 'title' => $title,
-                'slug' => Str::slug($title),
+                'slug' => Hash::make($title).Str::slug($title),
             ],
         );
     }

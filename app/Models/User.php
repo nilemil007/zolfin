@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 
 /**
@@ -25,7 +26,12 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $fillable = [
         'name',
+        'username',
+        'phone',
         'email',
+        'role',
+        'status',
+        'image',
         'password',
     ];
 
@@ -48,17 +54,24 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    protected string $uploads = 'storage/users';
+    protected string $uploads = 'storage/users/';
 
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
     }
 
-    protected function images(): Attribute
+    protected function image(): Attribute
     {
         return Attribute::make(
             get: fn ( $image ) => empty( $image ) ? asset('zolfin/assets/img/default-avatar.png') : $this->uploads . $image,
+        );
+    }
+
+    protected function password(): Attribute
+    {
+        return Attribute::make(
+            set: fn($password) => Hash::make($password),
         );
     }
 }
