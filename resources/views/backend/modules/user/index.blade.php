@@ -80,7 +80,7 @@
                 </div>
 
                 <!-- Delete category form -->
-                <form id="user_delete{{ $user->id }}" action="{{ route('admin.user.destroy', $user->id) }}" method="user" hidden="hidden">
+                <form id="user_delete{{ $user->id }}" action="{{ route('admin.user.destroy', $user->id) }}" method="post" hidden="hidden">
                     @csrf
                     @method('DELETE')
                 </form>

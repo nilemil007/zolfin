@@ -75,29 +75,31 @@
 
                 <!-- User -->
                 <li class="nav-item {{ request()->routeIs('admin.user.index') ? 'menu-open' :
-                (request()->routeIs('admin.user.create') ? 'menu-open' : '')}}">
+                (request()->routeIs('admin.user.create') ? 'menu-open' :
+                (request()->routeIs('admin.user.edit') ? 'menu-open' : ''))}}">
 
-                        <a href="#" class="nav-link {{ request()->routeIs('admin.user.index') ? 'active' :
-                        (request()->routeIs('admin.user.create') ? 'active' : '')}}">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>Users<i class="fas fa-angle-left right"></i></p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('admin.user.create') }}"
-                                    class="nav-link {{ request()->routeIs('admin.user.create') ? 'active' : '' }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Add new</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('admin.user.index') }}" class="nav-link {{ request()->routeIs('admin.user.index') ? 'active' : '' }}">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>All users</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                    <a href="#" class="nav-link {{ request()->routeIs('admin.user.index') ? 'active' :
+                    (request()->routeIs('admin.user.create') ? 'active' :
+                    (request()->routeIs('admin.user.edit') ? 'active' : ''))}}">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>Users<i class="fas fa-angle-left right"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.user.create') }}"
+                                class="nav-link {{ request()->routeIs('admin.user.create') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add new</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.user.index') }}" class="nav-link {{ request()->routeIs('admin.user.index') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>All users</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li class="nav-header">EXAMPLES</li>
 

@@ -1,129 +1,134 @@
 <x-app-layout>
     <!-- Site Title -->
-    <x-slot:title>Edit Post</x-slot:title>
+    <x-slot:title>Edit User</x-slot:title>
 
     <x-slot:content-header>
         <!-- Title -->
         <div class="col-sm-6">
-            <h1 class="m-0">Edit Post</h1>
+            <h1 class="m-0">Edit User</h1>
         </div>
     </x-slot:content-header>
 
-    @if($errors->any())
-        {!! Toastr::error(implode('', $errors->all('<div>:message</div>')), 'Error') !!}
-    @endif
-
-
-    <form class="row g-3" action="{{ route('admin.post.update', $post->id) }}" method="post" enctype="multipart/form-data">
+    <form class="row mt-4 g-3 form-horizontal" action="{{ route('admin.user.update', $user->id) }}" method="post" enctype="multipart/form-data">
         @csrf
-        @method('PATCH')
+        @method('PUT')
 
-        <div class="col-md-9">
-            <!-- Name -->
-            <div class="input-group mb-3">
-                <input id="postTitle" name="title" type="text" value="{{ old('title', $post->title) }}" class="form-control" placeholder="Enter post title" autofocus>
-            </div>
-
-            <!-- Content -->
-            <div class="mb-3">
-                <textarea name="content">{{ old('content', $post->content) }}</textarea>
+        <!-- Image -->
+        <div class="form-group row">
+            <label for="image" class="col-sm-2 col-form-label">Image</label>
+            <div class="col-sm-10">
+                <input type="file" name="image" class="form-control" id="image" accept="image/*" onchange="loadFile(event)">
+                @error('image') <div></div><small class="text-danger">{{ $message }}</small></div> @enderror
+                @if(!empty($user->image))
+                    <img src="{{ asset($user->image) }}" class="mt-2" id="output" width="200px"/>
+                @else
+                    <img class="mt-3" id="output" width="200px">
+                @endif
             </div>
         </div>
 
-        <div class="col-md-3">
-            <!-- Publish -->
-            <div class="card">
-                <div class="card-header" style="font-weight: bold;">
-                    Publish
-                </div>
-                <div class="card-body">
-                    <div class="form-check">
-                        <input name="status" class="form-check-input" type="radio" value="publish" id="publish" {{ $post->status == 'publish' ? 'checked' : '' }}>
-                        <label class="form-check-label" for="publish">
-                            Publish
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input name="status" class="form-check-input" type="radio" value="draft" id="draft" {{ $post->status == 'draft' ? 'checked' : '' }}>
-                        <label class="form-check-label" for="draft">
-                            Draft
-                        </label>
-                    </div>
-                </div>
-                <div class="card-footer d-flex justify-content-end">
-                    <button type="submit" class="btn btn-sm btn-info">Update & Publish</button>
-                </div>
+        <!-- Name -->
+        <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-10">
+                <input type="text" name="name" class="form-control" value="{{ old('name', $user->name) }}" id="name" placeholder="Enter full name">
+                @error('name') <small class="text-danger">{{ $message }}</small> @enderror
             </div>
+        </div>
 
-            <!-- Category -->
-            <div class="card">
-                <div class="card-header" style="font-weight: bold;">
-                    Categories
-                </div>
-                <div class="card-body overflow-auto" style="max-height: 230px;">
-                    @forelse($categories as $category)
-                        <div class="form-check">
-                            <input name="category_id" class="form-check-input" type="checkbox" value="{{ $category->id }}" id="category_checkbox_{{ $category->id }}" {{ $post->category->id == $category->id ? 'checked' : '' }}>
-                            <label class="form-check-label" for="category_checkbox_{{ $category->id }}">
-                                {{ $category->name }}
-                            </label>
-                        </div>
-                    @empty
-                    @endforelse
-                </div>
+        <!-- Username -->
+        <div class="form-group row">
+            <label for="username" class="col-sm-2 col-form-label">Username</label>
+            <div class="col-sm-10">
+                <input type="text" name="username" class="form-control" value="{{ old('username', $user->username) }}" id="username" placeholder="Enter username">
+                @error('username') <small class="text-danger">{{ $message }}</small> @enderror
             </div>
+        </div>
 
-            <!-- Tags -->
-            <div class="card">
-                <div class="card-header" style="font-weight: bold;">
-                    Tags
-                </div>
-                <div class="card-body">
-                    <input type="text" class="form-control" name="tags" value="{{ $post->tags }}"/>
-                </div>
+        <!-- Phone -->
+        <div class="form-group row">
+            <label for="phone" class="col-sm-2 col-form-label">Phone</label>
+            <div class="col-sm-10">
+                <input type="number" name="phone" class="form-control" value="{{ old('phone', $user->phone) }}" id="phone" placeholder="Enter phone number">
+                @error('phone') <small class="text-danger">{{ $message }}</small> @enderror
             </div>
+        </div>
 
-            <!-- Thumbnail -->
-            <div class="card">
-                <div class="card-header" style="font-weight: bold;">
-                    Thumbnail
-                </div>
-                <div class="card-body">
-                    <input name="thumbnail" type="file" accept="image/*" onchange="loadFile(event)">
-                    @if(!empty($post->thumbnail))
-                        <img src="{{ asset($post->thumbnail) }}" class="mt-2" id="output" width="100%"/>
-                    @else
-                        <img class="mt-2" id="output" width="100%"/>
-                    @endif
-                </div>
+        <!-- Email -->
+        <div class="form-group row">
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="email" name="email" class="form-control" value="{{ old('email', $user->email) }}" id="email" placeholder="Enter email address">
+                @error('email') <small class="text-danger">{{ $message }}</small> @enderror
             </div>
+        </div>
+
+        <!-- Role -->
+        <div class="form-group row">
+            <label for="role" class="col-sm-2 col-form-label">Role</label>
+            <div class="col-sm-10">
+                <select class="form-select" name="role" id="role" data-live-search="true">
+                    <option value="" disabled selected>-- Select role --</option>
+                    <option {{ $user->role == 'admin' ? 'selected' : '' }} value="admin">Admin</option>
+                    <option {{ $user->role == 'author' ? 'selected' : '' }} value="author">Author</option>
+                    <option {{ $user->role == 'editor' ? 'selected' : '' }} value="editor">Editor</option>
+                    <option {{ $user->role == 'modarator' ? 'selected' : '' }} value="modarator">Modarator</option>
+                </select>
+                @error('role') <small class="text-danger">{{ $message }}</small> @enderror
+            </div>
+        </div>
+
+        <!-- Current Password -->
+        <div class="form-group row">
+            <label for="current_password" class="col-sm-2 col-form-label">Current Password</label>
+            <div class="col-sm-10">
+                <input type="password" name="current_password" class="form-control" id="current_password" placeholder="Enter current password">
+                @error('current_password') <small class="text-danger">{{ $message }}</small> @enderror
+            </div>
+        </div>
+
+        <!-- New Password -->
+        <div class="form-group row">
+            <label for="password" class="col-sm-2 col-form-label">New Password</label>
+            <div class="col-sm-10">
+                <input type="password" name="password" class="form-control" id="password" placeholder="Enter new password">
+                @error('password') <small class="text-danger">{{ $message }}</small> @enderror
+            </div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group row">
+            <label for="password_confirmation" class="col-sm-2 col-form-label">Confirm Password</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="password_confirmation" placeholder="Enter confirm password">
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="mb-3">
+            <button type="submit" class="btn btn-sm btn-primary text-bold">Create New User</button>
         </div>
     </form>
+
 
     @push('scripts')
 
         <script>
 
-            {{--Preview post thumbnail--}}
-            const loadFile = function (event) {
-                const reader = new FileReader();
-                reader.onload = function () {
-                    const output = document.getElementById('output');
-                    output.src = reader.result;
-                };
-                reader.readAsDataURL(event.target.files[0]);
-            };
-
-            {{--Post tags--}}
-            $('input[name="tags"]').amsifySuggestags();
-
-            {{--Post editor--}}
-            tinymce.init({
-                selector: 'textarea', // Replace this CSS selector to match the placeholder element for TinyMCE
-                plugins: 'code table lists',
-                toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table'
+            $(document).ready(function() {
+                $('.form-select').select2();
             });
+
+            // Preview post thumbnail
+            const loadFile = function (event) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                const output = document.getElementById('output');
+                output.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        };
+
         </script>
     @endpush
 

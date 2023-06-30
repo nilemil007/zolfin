@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Backend;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Rules\CheckExistingPassword;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\File;
+use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
@@ -14,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::latest()->get();
 
         return view('backend.modules.user.index', compact('users'));
     }
@@ -68,24 +71,64 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        return 'UserController edit method.';
+        return view('backend.modules.user.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        return 'UserController update method.';
+        $information = $request->validate([
+            'name' => ['required','min:3','max:100','string'],
+            'username' => ['required','min:3','max:100','unique:users,username,'.$user->id],
+            'phone' => ['required','digits:11','unique:users,phone,'.$user->id],
+            'email' => ['required','email','unique:users,email,'.$user->id],
+            'role' => ['required'],
+            'image' => ['sometimes','image','mimes:jpg,jpeg,png'],
+            'current_password' => ['nullable', new CheckExistingPassword($user)],
+            'password' => ['nullable', Password::min(8)->mixedCase()->numbers()->symbols()->uncompromised()],
+         ]);
+
+         if ($request->hasFile('image')) {
+
+            if ( File::exists( public_path( $user->image ) ) )
+            {
+                File::delete( $user->image );
+            }
+
+            $name = 'user.'.$request->image->hashname();
+            $request->image->storeAs('public/users', $name);
+            $information['image'] = $name;
+         }
+
+         if ($user->update($information)) {
+            Toastr::success('User updated successfully.', 'Success');
+         }else{
+            Toastr::error('User not updated.', 'Error');
+         }
+
+         return to_route('admin.user.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
-        return 'UserController destroy method.';
+        if ($user->delete()) {
+            if ( File::exists( public_path( $user->image ) ) )
+            {
+                File::delete( $user->image );
+            }
+
+            Toastr::success('User deleted successfully.', 'Success');
+         }else{
+            Toastr::error('User not deleted.', 'Error');
+         }
+
+         return to_route('admin.user.index');
     }
 }

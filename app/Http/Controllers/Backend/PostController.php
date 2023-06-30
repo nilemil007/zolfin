@@ -81,12 +81,9 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($slug): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    public function edit(Post $post): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-
-        $post = Post::firstWhere('slug',$slug);
-        dd($post);
-        $categories = Category::all();
+        $categories = Category::latest()->get();
 
         return view('backend/modules/post/edit', compact('post','categories'));
     }
