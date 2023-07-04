@@ -10,6 +10,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -40,32 +41,21 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $category = Validator::make($request->only('name'),[
-            'name' => ['required','string'],
+            'name' => ['required','min:3','string'],
         ]);
 
         if ($category->fails()) {
-            return response()->json(['error' => $category->errors()]);
+            return to_route('admin.category.index')->withErrors($category)->withInput();
         }
 
-        Category::create( $request->only('name') );
+         if( Category::create( $request->only('name') ) )
+         {
+             Toastr::success('Category created successfully.', 'Success');
+         }else{
+             Toastr::error('Category not created.', 'Error');
+         }
 
-        return response()->json(['success' => 'New category created successfully.']);
-
-        // $request->validate([
-        //     'name' => ['required','string']
-        // ]);
-
-
-
-
-        // if( Category::create( $request->only('name') ) )
-        // {
-        //     Toastr::success('Category created successfully.', 'Success');
-        // }else{
-        //     Toastr::error('Category not created.', 'Error');
-        // }
-
-        // return redirect()->route('admin.category.index');
+         return to_route('admin.category.index');
     }
 
     /**
@@ -100,7 +90,7 @@ class CategoryController extends Controller
             Toastr::error('Category not updated.', 'Error');
         }
 
-        return redirect()->route('admin.category.index');
+        return to_route('admin.category.index');
     }
 
     /**
@@ -115,6 +105,6 @@ class CategoryController extends Controller
              Toastr::error('Category not deleted.', 'Error');
          }
 
-        return redirect()->route('admin.category.index');
+        return to_route('admin.category.index');
     }
 }

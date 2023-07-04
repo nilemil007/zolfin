@@ -15,30 +15,22 @@
                 @csrf
 
                 <!-- Name -->
-                <div class="col-12">
+                <div id="categoryName" class="col-12">
                     <label for="categoryName" class="form-label">Name</label>
-                    <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter category name" required autofocus>
-                    <small>The name is how it appears on your site.</small>
-
-                    <!-- Validation messages -->
-                    {{-- @error('name') <small class="text-danger">{{ $message }}</small> @enderror --}}
-
-                    <!-- Success messages -->
-                    {{-- @if ( session()->has('success') )
-                        <p class="text-success">{{ session('success') }}</p>
-                    @endif --}}
+                    <input name="name" type="text" class="form-control
+                    @error('name') is-invalid @enderror" placeholder="Enter category name" required autofocus>
+                    @error('name')<small class="text-danger font-weight-bold">{{ $message }}</small>@enderror
                 </div>
 
                 <!-- Submit button -->
                 <div class="col-12">
-                    <button class="btn btn-primary mt-3" id="submit" type="submit" id="button-addon2">
+                    <button class="btn btn-primary" id="submit" type="submit" id="button-addon2">
                         <i class="fas fa-plus"></i> Add New Category
                     </button>
                 </div>
             </form>
         </div>
         <div class="col-md-8">
-
             <div class="table-responsive">
                 <table id="tbl_categories" class="table table-sm table-striped table-hover table-bordered">
                 <thead>
@@ -106,31 +98,43 @@
             $(document).ready(function () {
                 $('#tbl_categories').DataTable();
 
-                $('#categoryForm').on('submit',function(e){
-                    e.preventDefault();
+                {{--$('#categoryForm').on('submit',function(e){--}}
+                {{--    e.preventDefault();--}}
 
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    });
+                {{--    $.ajaxSetup({--}}
+                {{--        headers: {--}}
+                {{--            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
+                {{--        }--}}
+                {{--    });--}}
 
-                    $.ajax({
-                        url: {{ route('admin.category.store') }},
-                        type: "POST",
-                        data: new FormData(this),
-                        dataType: "json",
-                        contentType: false,
-                        processData : false,
-                        beforeSend: function(){
-                            $('#submit').prop('disabled',true);
-                        },
-                        success: function(msg){
-                            alert(msg.success);
-                            // $('#submit').prop('disabled',false);
-                        },
-                    })
-                });
+                {{--    $.ajax({--}}
+                {{--        url: "{{ route('admin.category.store') }}",--}}
+                {{--        type: "POST",--}}
+                {{--        data: new FormData(this),--}}
+                {{--        dataType: "json",--}}
+                {{--        contentType: false,--}}
+                {{--        processData: false,--}}
+                {{--        cache: false,--}}
+                {{--        beforeSend: function(){--}}
+                {{--            $('#submit').prop('disabled',true).html('<i class="fas fa-plus"></i> Adding...');--}}
+                {{--        },--}}
+                {{--        success: function(msg){--}}
+                {{--            if(msg.error){--}}
+                {{--                $.each(msg.error, function(key, value){--}}
+                {{--                    $('#catNameErrMsg').remove();--}}
+                {{--                    $('#categoryName').append('<small id="catNameErrMsg" class="text-danger font-weight-bold">'+value+'</small>');--}}
+                {{--                });--}}
+
+                {{--                $('#submit').prop('disabled',false).html('<i class="fas fa-plus"></i> Add New Category');--}}
+                {{--            }else{--}}
+                {{--                // alert(msg.success);--}}
+                {{--                // $('#submit').prop('disabled',false).html('<i class="fas fa-plus"></i> Add New Category');--}}
+                {{--                // $('#categoryForm')[0].reset();--}}
+                {{--                // $('#tbl_categories').load(location.href+' #tbl_categories');--}}
+                {{--            }--}}
+                {{--        },--}}
+                {{--    })--}}
+                {{--});--}}
             });
         </script>
     @endpush
