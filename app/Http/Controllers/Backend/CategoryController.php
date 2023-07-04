@@ -12,6 +12,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
@@ -38,9 +39,24 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => ['required','string']
+        $category = Validator::make($request->only('name'),[
+            'name' => ['required','string'],
         ]);
+
+        if ($category->fails()) {
+            return response()->json(['error' => $category->errors()]);
+        }
+
+        Category::create( $request->only('name') );
+
+        return response()->json(['success' => 'New category created successfully.']);
+
+        // $request->validate([
+        //     'name' => ['required','string']
+        // ]);
+
+
+
 
         // if( Category::create( $request->only('name') ) )
         // {

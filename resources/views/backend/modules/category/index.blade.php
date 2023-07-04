@@ -17,16 +17,16 @@
                 <!-- Name -->
                 <div class="col-12">
                     <label for="categoryName" class="form-label">Name</label>
-                    <input name="emil" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter category name" required autofocus>
+                    <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter category name" required autofocus>
                     <small>The name is how it appears on your site.</small>
 
                     <!-- Validation messages -->
-                    @error('name') <small class="text-danger">{{ $message }}</small> @enderror
+                    {{-- @error('name') <small class="text-danger">{{ $message }}</small> @enderror --}}
 
                     <!-- Success messages -->
-                    @if ( session()->has('success') )
+                    {{-- @if ( session()->has('success') )
                         <p class="text-success">{{ session('success') }}</p>
-                    @endif
+                    @endif --}}
                 </div>
 
                 <!-- Submit button -->
@@ -123,10 +123,11 @@
                         contentType: false,
                         processData : false,
                         beforeSend: function(){
-                            $('#submit').addClass('disabled');
+                            $('#submit').prop('disabled',true);
                         },
                         success: function(msg){
-                            // $('#submit').removeClass('disabled');
+                            alert(msg.success);
+                            // $('#submit').prop('disabled',false);
                         },
                     })
                 });
