@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 <div class="card-footer d-flex justify-content-end">
-                    <button type="submit" class="btn btn-sm btn-info">Publish</button>
+                    <button id="publishPost" type="submit" class="btn btn-sm btn-info">Publish</button>
                 </div>
             </div>
 
@@ -91,7 +91,7 @@
                     Thumbnail
                 </div>
                 <div class="card-body">
-                    <input name="thumbnail" type="file" accept="image/*" onchange="loadFile(event)">
+                    <input class="form-control" name="thumbnail" type="file" accept="image/*" onchange="loadFile(event)">
                     <img class="mt-2" id="output" width="100%"/>
                 </div>
             </div>
@@ -101,8 +101,13 @@
     @push('scripts')
 
         <script>
+            $(document).ready(function(){
+                $('#publishPost').click(function(){
+                    $(this).replaceWith('Publishing...').addClass('disabled');
+                });
+            });
 
-            {{--Preview post thumbnail--}}
+            // Preview post thumbnail
             const loadFile = function (event) {
                 const reader = new FileReader();
                 reader.onload = function () {
@@ -112,10 +117,10 @@
                 reader.readAsDataURL(event.target.files[0]);
             };
 
-            {{--Post tags--}}
+            // Post tags
             $('input[name="tags"]').amsifySuggestags();
 
-            {{--Post editor--}}
+            // Post editor
             tinymce.init({
                 selector: 'textarea', // Replace this CSS selector to match the placeholder element for TinyMCE
                 plugins: 'code table lists',

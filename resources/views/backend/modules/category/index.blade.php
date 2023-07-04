@@ -11,13 +11,13 @@
 
     <div class="row">
         <div class="col-md-4">
-            <form class="row g-3" action="{{ route('admin.category.store') }}" method="post">
+            <form id="categoryForm" class="row g-3" action="{{ route('admin.category.store') }}" method="post">
                 @csrf
 
                 <!-- Name -->
                 <div class="col-12">
                     <label for="categoryName" class="form-label">Name</label>
-                    <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter category name" required autofocus>
+                    <input name="emil" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter category name" required autofocus>
                     <small>The name is how it appears on your site.</small>
 
                     <!-- Validation messages -->
@@ -31,7 +31,7 @@
 
                 <!-- Submit button -->
                 <div class="col-12">
-                    <button class="btn btn-primary mt-3" type="submit" id="button-addon2">
+                    <button class="btn btn-primary mt-3" id="submit" type="submit" id="button-addon2">
                         <i class="fas fa-plus"></i> Add New Category
                     </button>
                 </div>
@@ -105,6 +105,31 @@
         <script>
             $(document).ready(function () {
                 $('#tbl_categories').DataTable();
+
+                $('#categoryForm').on('submit',function(e){
+                    e.preventDefault();
+
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+
+                    $.ajax({
+                        url: {{ route('admin.category.store') }},
+                        type: "POST",
+                        data: new FormData(this),
+                        dataType: "json",
+                        contentType: false,
+                        processData : false,
+                        beforeSend: function(){
+                            $('#submit').addClass('disabled');
+                        },
+                        success: function(msg){
+                            // $('#submit').removeClass('disabled');
+                        },
+                    })
+                });
             });
         </script>
     @endpush

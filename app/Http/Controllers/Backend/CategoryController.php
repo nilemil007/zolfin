@@ -36,20 +36,20 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $request->validate([
             'name' => ['required','string']
         ]);
 
-        if( Category::create( $request->only('name') ) )
-        {
-            Toastr::success('Category created successfully.', 'Success');
-        }else{
-            Toastr::error('Category not created.', 'Error');
-        }
+        // if( Category::create( $request->only('name') ) )
+        // {
+        //     Toastr::success('Category created successfully.', 'Success');
+        // }else{
+        //     Toastr::error('Category not created.', 'Error');
+        // }
 
-        return redirect()->route('admin.category.index');
+        // return redirect()->route('admin.category.index');
     }
 
     /**

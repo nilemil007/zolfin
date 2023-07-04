@@ -106,7 +106,7 @@
 
         <!-- Submit Button -->
         <div class="mb-3">
-            <button type="submit" class="btn btn-sm btn-primary text-bold">Create New User</button>
+            <button type="submit" class="btn btn-sm btn-primary text-bold">Save changes</button>
         </div>
     </form>
 

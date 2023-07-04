@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>{{ !isset($title) ? config('app.name') : $title .' | '. config('app.name') }}</title>
 
     <!-- favicon -->
@@ -41,13 +42,7 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    @if(request()->routeIs('author*'))
-        @include('backend.author.inc.sidebar')
-    @elseif(request()->routeIs('editor*'))
-        @include('backend.editor.inc.sidebar')
-    @else
-        @include('backend.admin.inc.sidebar')
-    @endif
+    @include('backend.admin.inc.sidebar')
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
