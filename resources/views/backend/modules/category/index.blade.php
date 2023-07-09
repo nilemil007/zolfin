@@ -97,44 +97,6 @@
         <script>
             $(document).ready(function () {
                 $('#tbl_categories').DataTable();
-
-                {{--$('#categoryForm').on('submit',function(e){--}}
-                {{--    e.preventDefault();--}}
-
-                {{--    $.ajaxSetup({--}}
-                {{--        headers: {--}}
-                {{--            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
-                {{--        }--}}
-                {{--    });--}}
-
-                {{--    $.ajax({--}}
-                {{--        url: "{{ route('admin.category.store') }}",--}}
-                {{--        type: "POST",--}}
-                {{--        data: new FormData(this),--}}
-                {{--        dataType: "json",--}}
-                {{--        contentType: false,--}}
-                {{--        processData: false,--}}
-                {{--        cache: false,--}}
-                {{--        beforeSend: function(){--}}
-                {{--            $('#submit').prop('disabled',true).html('<i class="fas fa-plus"></i> Adding...');--}}
-                {{--        },--}}
-                {{--        success: function(msg){--}}
-                {{--            if(msg.error){--}}
-                {{--                $.each(msg.error, function(key, value){--}}
-                {{--                    $('#catNameErrMsg').remove();--}}
-                {{--                    $('#categoryName').append('<small id="catNameErrMsg" class="text-danger font-weight-bold">'+value+'</small>');--}}
-                {{--                });--}}
-
-                {{--                $('#submit').prop('disabled',false).html('<i class="fas fa-plus"></i> Add New Category');--}}
-                {{--            }else{--}}
-                {{--                // alert(msg.success);--}}
-                {{--                // $('#submit').prop('disabled',false).html('<i class="fas fa-plus"></i> Add New Category');--}}
-                {{--                // $('#categoryForm')[0].reset();--}}
-                {{--                // $('#tbl_categories').load(location.href+' #tbl_categories');--}}
-                {{--            }--}}
-                {{--        },--}}
-                {{--    })--}}
-                {{--});--}}
             });
         </script>
     @endpush

@@ -101,8 +101,68 @@
                     </ul>
                 </li>
 
-                <li class="nav-header">EXAMPLES</li>
+                <li class="nav-header">Role & Permission</li>
 
+                <!-- Permissions -->
+                <li class="nav-item {{ request()->routeIs('admin.permission.index') ? 'menu-open' :
+                    (request()->routeIs('admin.permission.create') ? 'menu-open' :
+                    (request()->routeIs('admin.permission.edit') ? 'menu-open' : ''))}}">
+
+                    <a href="#" class="nav-link {{ request()->routeIs('admin.permission.index') ? 'active' :
+                    (request()->routeIs('admin.permission.create') ? 'active' :
+                    (request()->routeIs('admin.permission.edit') ? 'active' : ''))}}">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>Permissions<i class="fas fa-angle-left right"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.permission.create') }}"
+                                class="nav-link {{ request()->routeIs('admin.permission.create') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add new</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.permission.index') }}" class="nav-link {{ request()->routeIs('admin.permission.index') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>All permissions</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Roles -->
+                <li class="nav-item {{ request()->routeIs('admin.role.index') ? 'menu-open' :
+                    (request()->routeIs('admin.role.create') ? 'menu-open' :
+                    (request()->routeIs('admin.role.edit') ? 'menu-open' : ''))}}">
+
+                    <a href="#" class="nav-link {{ request()->routeIs('admin.role.index') ? 'active' :
+                    (request()->routeIs('admin.role.create') ? 'active' :
+                    (request()->routeIs('admin.role.edit') ? 'active' : ''))}}">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>Roles<i class="fas fa-angle-left right"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.role.create') }}"
+                                class="nav-link {{ request()->routeIs('admin.role.create') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add new</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.role.index') }}" class="nav-link {{ request()->routeIs('admin.role.index') ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>All roles</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li class="nav-header">Logout</li>
+
+                <!-- Log Out -->
                 <li class="nav-item">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
