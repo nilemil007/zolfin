@@ -33,12 +33,12 @@
                     <td>{{ $permission->group_name }}</td>
                     <td>
                         <!-- Edit button -->
-                        <a href="{{ route('admin.permission.edit', $permission->id) }}" class="text-primary">Edit</a>
+                        <a href="{{ route('admin.permission.edit', $permission->id) }}" class="text-primary"><i class="fas fa-edit"></i></a>
 
                         <span> | </span>
 
                         <!-- Delete button -->
-                        <a href="javascript.void(0)" class="text-danger" data-toggle="modal" data-target="#delPermission{{ $permission->id }}">Delete</a>
+                        <a href="javascript.void(0)" class="text-danger" data-toggle="modal" data-target="#delPermission{{ $permission->id }}"><i class="fas fa-trash-alt"></i></a>
                     </td>
                     <!-- Modal -->
                     <div class="modal fade" id="delPermission{{ $permission->id }}" tabindex="-1">

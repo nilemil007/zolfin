@@ -10,10 +10,20 @@
     </x-slot:content-header>
 
     <div class="mb-3 d-flex justify-content-end">
-        <a href="{{ route('admin.role.create') }}" class="btn btn-sm btn-primary m-0">
-            Add new role
-        </a>
+        <form class="mt-4 g-3" action="{{ route('admin.role.store') }}" method="post">
+            @csrf
+
+            <!-- Name -->
+            <div class="input-group">
+                <input type="text" name="name" class="form-control-sm" value="{{ old('name') }}" id="name" placeholder="Enter role name" required>
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-sm btn-primary text-bold">Create New Role</button>
+                </div>
+            </div>
+            @error('name') <small class="text-danger">{{ $message }}</small> @enderror
+        </form>
     </div>
+
 
     <div class="table-responsive">
         <table id="tbl_role" class="table table-sm table-striped table-hover table-bordered">
@@ -32,10 +42,12 @@
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                         <!-- Edit button -->
-                        <a href="{{ route('admin.role.edit', $role->id) }}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
+                        <a href="{{ route('admin.role.edit', $role->id) }}" class="text-primary"><i class="fas fa-edit"></i></a>
+
+                        <span>&nbsp;|&nbsp;</span>
 
                         <!-- Delete button -->
-                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delRole{{ $role->id }}"><i class="fas fa-trash-alt"></i></button>
+                        <a href="javascript.void(0)" class="text-danger" data-toggle="modal" data-target="#delRole{{ $role->id }}"><i class="fas fa-trash-alt"></i></button>
                     </div>
                 </td>
                 <!-- Modal -->
